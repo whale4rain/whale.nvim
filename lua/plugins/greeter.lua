@@ -1,9 +1,11 @@
 return {
     "goolord/alpha-nvim",
-    requires = { 'echasnovski/mini.icons' },
-    config = function ()
-        local alpha = require'alpha'
-        local startify = require'alpha.themes.startify'
+    requires = { "nvim-tree/nvim-web-devicons" }, -- 如果需要文件图标
+    config = function()
+        local alpha = require("alpha")
+        local startify = require("alpha.themes.startify")
+        
+        -- 自定义 header（可选）
         startify.section.header.val = {
             [[   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ]],
             [[    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ]],
@@ -17,31 +19,46 @@ return {
             [[      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ]],
             [[       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ]],
         }
+        --startify.section.header.opts = { position = "center" }
+        -- 配置 sections（保留最近文件 + 添加按钮）
         startify.section.top_buttons.val = {
-            startify.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
-        }
-        -- disable MRU
-        startify.section.mru.val = { { type = "padding", val = 0 } }
-        -- disable MRU cwd
-        startify.section.mru_cwd.val = { { type = "padding", val = 0 } }
-        -- disable file_icons
-        startify.file_icons.enabled = false
-        -- startify.file_icons.highlight = false
-        -- startify.file_icons.highlight = 'Keyword'
-        --
-        startify.section.bottom_buttons.val = {
-            startify.button( "q", "󰅚  Quit NVIM" , ":qa<CR>"),
+            --{ type = "text", val = "⚡ Quick Actions" },
+            { type = "padding", val = 1 , opts = { position = "center" } },
+            startify.button("e", "New File", ":ene <BAR> startinsert<CR>"),
+            startify.button("f", "Find File", ":Telescope find_files<CR>"),
+            startify.button("g", "Find Word", ":Telescope live_grep<CR>"),
+            startify.button("c", "Configuration", ":e $MYVIMRC<CR>"),
+            startify.button("u", "Update Plugins", "<cmd>Lazy sync<CR>"),
+            startify.button("q", "Quit NVIM", ":qa<CR>"),
         }
         startify.section.footer.val = {
-            { type = "text", val = "footer" },
+            { type = "text", val = "end or not" },
         }
-        -- ignore filetypes in MRU
-
-        startify.mru_opts.ignore = function(path, ext)
-            return
-                    (string.find(path, "COMMIT_EDITMSG"))
-                or  (vim.tbl_contains(default_mru_ignore, ext))
-        end
+        -- 调整 section 顺序（可选）
+        startify.config.layout = {
+            { type = "padding", val = 1},
+            startify.section.header,
+            { type = "padding", val = 1 },
+            startify.section.top_buttons,
+            { type = "padding", val = 1 },
+            startify.section.mru_cwd,
+            startify.section.mru,
+            { type = "padding", val = 1 },
+            startify.section.footer,
+        }
+        
+        -- 设置配置
         alpha.setup(startify.config)
-    end
-}
+        
+        -- 自动显示 Alpha 当没有打开的文件时
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "AlphaReady",
+            callback = function()
+                vim.cmd [[
+                    set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
+                ]]
+            end,
+        })
+    end,
+  }
+  
