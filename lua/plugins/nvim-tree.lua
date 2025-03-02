@@ -7,6 +7,7 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 
+		--test
 		nvimtree.setup({
 			view = {
 				width = 35,
@@ -56,14 +57,14 @@ return {
 		) -- toggle file explorer on current file
 		keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
 		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-    -- 打开当前buffer的文件所在目录
-    -- 打开当前 buffer 的文件所在目录
-    keymap.set(
-      "n",
-      "<leader>eb",
-      "<cmd>NvimTreeFindFile<CR>",
-      { desc = "Focus file explorer on current buffer's directory" }
-    ) -- focus file explorer on current buffer's directory
-
+		-- 打开当前buffer的文件所在目录
+		-- 打开当前 buffer 的文件所在目录
+		-- 新增：在当前文件所在目录打开 nvim-tree
+		keymap.set(
+			"n",
+			"<leader>eb",
+			"<cmd>NvimTreeFindFileToggle!<CR>",
+			{ desc = "Toggle file explorer at current file's directory" }
+		)
 	end,
 }

@@ -2,9 +2,11 @@ return {
 	"lukas-reineke/indent-blankline.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	main = "ibl",
-
+    -- 不要彩色，留下opt，config都可以注释掉
+    --opt = {
+    --    indent = { char = "┊" },
+    --}
 	config = function()
-		indent = { char = "┊" }
 		local highlight = {
 			"RainbowRed",
 			"RainbowYellow",
