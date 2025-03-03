@@ -64,3 +64,9 @@ keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+-----------------
+---Visual Blok --
+-----------------
+
+keymap.set("x", "I", "I", opts) -- 确保 Shift + I 正常工作
