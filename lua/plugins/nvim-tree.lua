@@ -62,7 +62,7 @@ return {
 		-- 新增：在当前文件所在目录打开 nvim-tree
 		keymap.set(
 			"n",
-			"<leader>eb",
+			"<leader>ed",
 			"<cmd>NvimTreeFindFileToggle!<CR>",
 			{ desc = "Toggle file explorer at current file's directory" }
 		)

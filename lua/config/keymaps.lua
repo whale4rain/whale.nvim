@@ -15,6 +15,10 @@ keymap.set("v", "u", "<Esc>", opts) -- u to escape
 -----------------
 -- Normal mode --
 -----------------
+-- switch $ to 
+
+keymap.set("n", "9", "$", opts)
+
 
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
