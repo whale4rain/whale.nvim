@@ -9,7 +9,7 @@ opt.mouse = "a" -- allow the mouse to be used in Nvim
 opt.autoindent = true
 opt.tabstop = 4 -- number of visual spaces per TAB
 opt.softtabstop = 4 -- number of spacesin tab when editing
-opt.shiftwidth = 4 -- insert 4 spaces on a tab
+opt.shiftwidth = 3 -- insert 4 spaces on a tab
 opt.expandtab = true -- tabs are spaces, mainly because of python
 
 -- UI config

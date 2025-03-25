@@ -15,10 +15,9 @@ keymap.set("v", "u", "<Esc>", opts) -- u to escape
 -----------------
 -- Normal mode --
 -----------------
--- switch $ to 
+-- switch $ to
 
 keymap.set("n", "9", "$", opts)
-
 
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
@@ -31,8 +30,8 @@ keymap.set("n", "<leader>sh", "<C-w>s", opts) -- split window horizontally
 -- Better buffer navigation
 keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", opts) -- next buffer
 keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", opts) -- previous buffer
-keymap.set("n", "<leader>bd", ":BufferLineCloseLeft<CR>", opts) -- close buffer
-
+keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", opts) -- close buffer
+keymap.set("n", "<leader>bx", "<cmd>%bdelete|edit#<cr>", opts)
 --取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
 -- Resize with arrows
@@ -46,6 +45,7 @@ keymap.set("n", "<leader>wd", "<cmd>close<CR>", { desc = "Close current split" }
 --plugin's keymap--
 -------------------
 
+keymap.set("n", "<leader>bb", "<cmd>BufferLinePick<cr>", { desc = "PiFuzzy find files in cwdck buffer" })
 -- Treesitter context
 vim.keymap.set("n", "[c", function()
 	require("treesitter-context").go_to_context(vim.v.count1)
