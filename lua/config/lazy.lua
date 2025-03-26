@@ -26,9 +26,10 @@ vim.g.maplocalleader = "\\"
 if vim.g.neovide then
 	-- 字体
 	vim.o.guifont = "FiraCode Nerd Font:h11"
+
 	-- 透明
-	vim.g.neovide_opacity = 0.9
-	vim.g.neovide_normal_opacity = 0.9
+	-- vim.g.neovide_opacity = 0.9
+	-- vim.g.neovide_normal_opacity = 0.9
 	-- 窗口颜色
 	vim.g.neovide_title_background_color =
 		string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)

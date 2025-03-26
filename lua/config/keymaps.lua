@@ -15,6 +15,9 @@ keymap.set("v", "u", "<Esc>", opts) -- u to escape
 -----------------
 -- Normal mode --
 -----------------
+-- 保存并退出
+vim.keymap.set("n", "<leader>qq", "<cmd>wq<cr>", { desc = "Save and quit" })
+
 -- switch $ to
 
 keymap.set("n", "9", "$", opts)
@@ -49,7 +52,7 @@ keymap.set("n", "<leader>bb", "<cmd>BufferLinePick<cr>", { desc = "PiFuzzy find 
 -- Treesitter context
 vim.keymap.set("n", "[c", function()
 	require("treesitter-context").go_to_context(vim.v.count1)
-end, opts) --- go to previous context
+end, { desc = "Go to previous context" }) --- go to previous context
 
 -- 在配置文件中添加以下代码
 vim.api.nvim_set_keymap(
