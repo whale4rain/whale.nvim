@@ -16,7 +16,7 @@ keymap.set("v", "u", "<Esc>", opts) -- u to escape
 -- Normal mode --
 -----------------
 -- 保存并退出
-vim.keymap.set("n", "<leader>qq", "<cmd>wq<cr>", { desc = "Save and quit" })
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Save and quit" })
 
 -- switch $ to
 
@@ -54,10 +54,10 @@ vim.keymap.set("n", "[c", function()
 	require("treesitter-context").go_to_context(vim.v.count1)
 end, { desc = "Go to previous context" }) --- go to previous context
 
--- 在配置文件中添加以下代码
+-- Rust 配置
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>rf",
+	"<leader>rff",
 	"<cmd>lua vim.lsp.buf.format()<CR>",
 	{ noremap = true, silent = true, desc = "Format Rust code" }
 )
@@ -77,3 +77,7 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 -----------------
 
 keymap.set("x", "I", "I", opts) -- 确保 Shift + I 正常工作
+
+-----------------
+---self  made --
+-----------------

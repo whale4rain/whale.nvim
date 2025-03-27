@@ -8,9 +8,8 @@ return {
 				section_separators = { left = "⣿", right = "⣿" },
 				component_separators = { left = "|", right = "|" },
 				-- theme = 'powerline'
-				theme = "palenight",
+				-- theme = "palenight",
 			},
 		})
 	end,
 }
-

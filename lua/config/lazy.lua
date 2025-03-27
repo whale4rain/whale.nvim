@@ -25,15 +25,15 @@ vim.g.maplocalleader = "\\"
 -- 设置for Neovide
 if vim.g.neovide then
 	-- 字体
-	vim.o.guifont = "FiraCode Nerd Font:h11"
+	vim.o.guifont = "FiraCode Nerd Font Mono:h11"
 
 	-- 透明
 	-- vim.g.neovide_opacity = 0.9
 	-- vim.g.neovide_normal_opacity = 0.9
 	-- 窗口颜色
-	vim.g.neovide_title_background_color =
-		string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
-	vim.g.neovide_title_text_color = "white"
+	vim.g.neovide_title_background_color = "#282828"
+	-- string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
+	vim.g.neovide_title_text_color = "#ebdbb2"
 	-- 无空闲
 	vim.g.neovide_no_idle = true
 	-- 记住窗口大小
@@ -58,7 +58,7 @@ require("lazy").setup({
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "rose-pine" } },
+	install = { colorscheme = { "gruvbox" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
