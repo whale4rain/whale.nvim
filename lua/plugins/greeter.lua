@@ -296,6 +296,8 @@ return {
 			dashboard.button("e", "󰈔  New File", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("f", "󰈞  Find File", ":Telescope find_files<CR>"),
 			dashboard.button("r", "↻  Recent Files", ":Telescope oldfiles<CR>"),
+			-- restore session
+			dashboard.button("w", "󰁯 Restore Session", ":SessionRestore<CR>"),
 			dashboard.button(
 				"c",
 				"  Config",

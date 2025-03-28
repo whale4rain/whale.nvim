@@ -9,6 +9,13 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
+		lspconfig.ruff.setup({
+			init_options = {
+				settings = {
+					-- Ruff language server settings go here
+				},
+			},
+		})
 
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
@@ -24,6 +31,9 @@ return {
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
+				local map = function(keys, func, desc)
+					vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
+				end
 
 				-- set keybinds
 				opts.desc = "Show LSP references"
@@ -64,9 +74,16 @@ return {
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
+				-- Inlay hint
+				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+					-- vim.lsp.inlay_hint.enable()
+					map("<leader>th", function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
+					end, "Toggle Inlay Hints")
+				end
 			end,
 		})
-
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -77,6 +94,32 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+		-- 设置各种服务器的配置
+
+		mason_lspconfig.setup_handlers({
+			-- default handler for installed servers
+			function(server_name)
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+				})
+			end,
+			["lua_ls"] = function()
+				-- configure lua server (with special settings)
+				lspconfig["lua_ls"].setup({
+					capabilities = capabilities,
+					settings = {
+						Lua = {
+							-- make the language server recognize "vim" global
+							diagnostics = {
+								globals = { "vim" },
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
+						},
+					},
+				})
+			end,
+		})
 	end,
 }
-

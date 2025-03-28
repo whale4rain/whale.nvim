@@ -19,12 +19,23 @@ return {
 
 		-- 配置 toggleterm.nvim
 		require("toggleterm").setup({
-			size = 20, -- 终端窗口的高度
+			size = function(term)
+				if term.direction == "vertical" then
+					return vim.o.columns * 0.3
+				elseif term.direction == "horizontal" then
+					return vim.o.lines * 0.3
+				end
+			end,
 			open_mapping = [[<c-\>]], -- 打开/关闭终端的快捷键
 			direction = "horizontal", -- 终端窗口的方向（horizontal, vertical, float, tab）
 			shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell", -- 使用 PowerShell 作为默认 shell
 			auto_scroll = true, -- 自动滚动到底部
 			persist_mode = true, -- 保持终端状态
+			highlights = {
+				Normal = {
+					guibg = "#3c3826",
+				},
+			},
 
 			-- 自定义终端
 			terminals = {

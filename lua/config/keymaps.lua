@@ -81,3 +81,10 @@ keymap.set("x", "I", "I", opts) -- 确保 Shift + I 正常工作
 -----------------
 ---self  made --
 -----------------
+
+keymap.set(
+	"n",
+	"<leader>cf",
+	":lua require('telescope.builtin').find_files({ cwd = 'C:/Users/86152/AppData/Local/nvim' })<CR>",
+	{ desc = "go to the config file" }
+)
