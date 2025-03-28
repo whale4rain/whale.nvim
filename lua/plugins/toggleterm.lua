@@ -1,5 +1,6 @@
 return {
 	"akinsho/toggleterm.nvim",
+	event = "VeryLazy",
 	version = "*",
 	config = function()
 		-- 设置 PowerShell 相关选项
@@ -51,7 +52,12 @@ return {
 		local keymap = vim.keymap
 
 		-- 打开/关闭终端
-		keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
+		keymap.set(
+			"n",
+			"<leader>th",
+			"<cmd>ToggleTerm direction=horizontal<cr>",
+			{ desc = "Toggle horizontal terminal" }
+		)
 
 		-- 打开/关闭浮动终端
 		keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle floating terminal" })
@@ -60,6 +66,6 @@ return {
 		keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle vertical terminal" })
 
 		-- 打开/关闭标签页终端
-		keymap.set("n", "<leader>ttab", "<cmd>ToggleTerm direction=tab<cr>", { desc = "Toggle tab terminal" })
+		keymap.set("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<cr>", { desc = "Toggle tab terminal" })
 	end,
 }

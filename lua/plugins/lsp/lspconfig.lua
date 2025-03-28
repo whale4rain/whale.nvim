@@ -13,6 +13,20 @@ return {
 			init_options = {
 				settings = {
 					-- Ruff language server settings go here
+					enable = true,
+					lint = {
+						enabled = true,
+						run = "onsave",
+						max_line_length = 120,
+					},
+					format = {
+						enabled = true,
+						run = "onSave",
+					},
+					fix = {
+						enabled = false,
+						run = "onSave",
+					},
 				},
 			},
 		})
@@ -78,7 +92,7 @@ return {
 				-- Inlay hint
 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 					-- vim.lsp.inlay_hint.enable()
-					map("<leader>th", function()
+					map("<leader>ih", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
 					end, "Toggle Inlay Hints")
 				end
