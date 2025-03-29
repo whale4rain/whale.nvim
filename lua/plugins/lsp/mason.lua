@@ -23,5 +23,24 @@ return {
 				},
 			},
 		})
+		mason_lspconfig.setup({
+			ensure_installed = {
+				"ruff",
+				"rust_analyzer",
+				"clangd",
+				"lua_ls",
+			},
+		})
+		mason_tool_installer.setup({
+			ensure_installed = {
+				"stylua",
+				"prettier",
+				"isort",
+				"flake8",
+				"black",
+				"clang-format",
+				"cpplint",
+			},
+		})
 	end,
 }
