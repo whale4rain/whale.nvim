@@ -1,3 +1,5 @@
+---@function fold code cnotext
+
 return {
 	"kevinhwang91/nvim-ufo",
 	event = { "BufReadPost", "BufNewFile" },

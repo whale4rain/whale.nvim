@@ -2,7 +2,6 @@
 return {
 	{
 		"abecodes/tabout.nvim",
-		lazy = false,
 		config = function()
 			require("tabout").setup({
 				tabkey = "j<Tab>", -- key to trigger tabout, set to an empty string to disable
@@ -29,7 +28,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		opt = true, -- Set this to true if the plugin is optional
-		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
+		event = { "BufReadPre", "BufNewFile" },
 		priority = 1000,
 	},
 	-- {
