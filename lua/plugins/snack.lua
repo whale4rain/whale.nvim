@@ -3,10 +3,13 @@ return {
 	priority = 1000,
 	lazy = false,
 	---@type snacks.Config
+	config = function()
+		require("plugins.config.snack")
+	end,
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
-		explorer = { enabled = false },
+		explorer = { enabled = true },
 		indent = { enabled = false },
 		input = { enabled = true },
 		notifier = {
@@ -30,6 +33,29 @@ return {
 	keys = {
 		-- Top Pickers & Explorer
 		{
+			"<leader>fT",
+			function()
+				Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME", "HACK" }, layout = "select" })
+			end,
+			desc = "Todo/Fix/Fixme",
+		},
+		{
+			"<leader>fk",
+			function()
+				Snacks.picker.keymaps({
+					layout = "dropdown",
+				})
+			end,
+			desc = "Keymaps",
+		},
+		{
+			"<leader>fm",
+			function()
+				Snacks.picker.marks()
+			end,
+			desc = "Marks",
+		},
+		{
 			"<leader><space>",
 			function()
 				Snacks.picker.smart()
@@ -51,20 +77,26 @@ return {
 			desc = "Command History",
 		},
 		{
+			"<leader>sC",
+			function()
+				Snacks.picker.commands()
+			end,
+			desc = "Commands",
+		},
+		{
 			"<leader>nh",
 			function()
 				Snacks.picker.notifications()
 			end,
 			desc = "Notification History",
 		},
-		-- {
-		-- 	"<leader>ef",
-		-- 	function()
-		-- 		Snacks.explorer()
-		-- 	end,
-		-- 	desc = "File Explorer",
-		-- },
-		-- find
+		{
+			"<leader>ef",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "File Explorer",
+		},
 		{
 			"<leader>fb",
 			function()
@@ -108,41 +140,41 @@ return {
 			desc = "Recent",
 		},
 		-- git
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Git Branches",
-		},
-		{
-			"<leader>gl",
-			function()
-				Snacks.picker.git_log()
-			end,
-			desc = "Git Log",
-		},
-		{
-			"<leader>gL",
-			function()
-				Snacks.picker.git_log_line()
-			end,
-			desc = "Git Log Line",
-		},
-		{
-			"<leader>gs",
-			function()
-				Snacks.picker.git_status()
-			end,
-			desc = "Git Status",
-		},
-		{
-			"<leader>gS",
-			function()
-				Snacks.picker.git_stash()
-			end,
-			desc = "Git Stash",
-		},
+		-- {
+		-- 	"<leader>gb",
+		-- 	function()
+		-- 		Snacks.picker.git_branches()
+		-- 	end,
+		-- 	desc = "Git Branches",
+		-- },
+		-- {
+		-- 	"<leader>gl",
+		-- 	function()
+		-- 		Snacks.picker.git_log()
+		-- 	end,
+		-- 	desc = "Git Log",
+		-- },
+		-- {
+		-- 	"<leader>gL",
+		-- 	function()
+		-- 		Snacks.picker.git_log_line()
+		-- 	end,
+		-- 	desc = "Git Log Line",
+		-- },
+		-- {
+		-- 	"<leader>gs",
+		-- 	function()
+		-- 		Snacks.picker.git_status()
+		-- 	end,
+		-- 	desc = "Git Status",
+		-- },
+		-- {
+		-- 	"<leader>gS",
+		-- 	function()
+		-- 		Snacks.picker.git_stash()
+		-- 	end,
+		-- 	desc = "Git Stash",
+		-- },
 		{
 			"<leader>gd",
 			function()
@@ -188,20 +220,20 @@ return {
 			mode = { "n", "x" },
 		},
 		-- search
-		{
-			'<leader>s"',
-			function()
-				Snacks.picker.registers()
-			end,
-			desc = "Registers",
-		},
-		{
-			"<leader>s/",
-			function()
-				Snacks.picker.search_history()
-			end,
-			desc = "Search History",
-		},
+		-- {
+		-- 	'<leader>s"',
+		-- 	function()
+		-- 		Snacks.picker.registers()
+		-- 	end,
+		-- 	desc = "Registers",
+		-- },
+		-- {
+		-- 	"<leader>s/",
+		-- 	function()
+		-- 		Snacks.picker.search_history()
+		-- 	end,
+		-- 	desc = "Search History",
+		-- },
 		-- {
 		-- 	"<leader>sa",
 		-- 	function()
@@ -216,20 +248,14 @@ return {
 			end,
 			desc = "Buffer Lines",
 		},
-		{
-			"<leader>sc",
-			function()
-				Snacks.picker.command_history()
-			end,
-			desc = "Command History",
-		},
-		{
-			"<leader>sC",
-			function()
-				Snacks.picker.commands()
-			end,
-			desc = "Commands",
-		},
+		-- {
+		-- 	"<leader>sc",
+		-- 	function()
+		-- 		Snacks.picker.command_history()
+		-- 	end,
+		-- 	desc = "Command History",
+		-- },
+
 		{
 			"<leader>sd",
 			function()
@@ -265,13 +291,13 @@ return {
 			end,
 			desc = "Icons",
 		},
-		{
-			"<leader>sj",
-			function()
-				Snacks.picker.jumps()
-			end,
-			desc = "Jumps",
-		},
+		-- {
+		-- 	"<leader>sj",
+		-- 	function()
+		-- 		Snacks.picker.jumps()
+		-- 	end,
+		-- 	desc = "Jumps",
+		-- },
 		{
 			"<leader>sk",
 			function()
@@ -279,13 +305,13 @@ return {
 			end,
 			desc = "Keymaps",
 		},
-		{
-			"<leader>sl",
-			function()
-				Snacks.picker.loclist()
-			end,
-			desc = "Location List",
-		},
+		-- {
+		-- 	"<leader>sl",
+		-- 	function()
+		-- 		Snacks.picker.loclist()
+		-- 	end,
+		-- 	desc = "Location List",
+		-- },
 		{
 			"<leader>sm",
 			function()
@@ -293,13 +319,13 @@ return {
 			end,
 			desc = "Marks",
 		},
-		{
-			"<leader>sM",
-			function()
-				Snacks.picker.man()
-			end,
-			desc = "Man Pages",
-		},
+		-- {
+		-- 	"<leader>sM",
+		-- 	function()
+		-- 		Snacks.picker.man()
+		-- 	end,
+		-- 	desc = "Man Pages",
+		-- },
 		{
 			"<leader>sp",
 			function()
@@ -314,20 +340,20 @@ return {
 			end,
 			desc = "Quickfix List",
 		},
-		{
-			"<leader>sR",
-			function()
-				Snacks.picker.resume()
-			end,
-			desc = "Resume",
-		},
-		{
-			"<leader>su",
-			function()
-				Snacks.picker.undo()
-			end,
-			desc = "Undo History",
-		},
+		-- {
+		-- 	"<leader>sR",
+		-- 	function()
+		-- 		Snacks.picker.resume()
+		-- 	end,
+		-- 	desc = "Resume",
+		-- },
+		-- {
+		-- 	"<leader>su",
+		-- 	function()
+		-- 		Snacks.picker.undo()
+		-- 	end,
+		-- 	desc = "Undo History",
+		-- },
 		{
 			"<leader>uC",
 			function()
@@ -407,6 +433,8 @@ return {
 				Snacks.scratch()
 			end,
 			desc = "Toggle Scratch Buffer",
+		},
+		{
 			"<leader>S",
 			function()
 				Snacks.scratch.select()
@@ -426,6 +454,13 @@ return {
 				Snacks.bufdelete()
 			end,
 			desc = "Delete Buffer",
+		},
+		{
+			"<leader>bx",
+			function()
+				Snacks.bufdelete.other()
+			end,
+			desc = "Delete Other Buffers",
 		},
 		{
 			"<leader>cR",

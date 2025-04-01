@@ -33,7 +33,6 @@ keymap.set("n", "<leader>sh", "<C-w>s", opts) -- split window horizontally
 -- Better buffer navigation
 keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", opts) -- next buffer
 keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", opts) -- previous buffer
-keymap.set("n", "<leader>bx", "<cmd>%bdelete|edit#<cr>", opts)
 --取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
 -- Resize with arrows
