@@ -146,6 +146,9 @@ local FileNameBlock = {
 	init = function(self)
 		self.filename = vim.api.nvim_buf_get_name(0)
 	end,
+	hl = {
+		bg = "#1e1e2e",
+	},
 }
 -- We can now define some children separately and add them later
 

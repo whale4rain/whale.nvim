@@ -9,24 +9,26 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
-		explorer = { enabled = true },
 		indent = { enabled = false },
+		explorer = { enabled = true },
 		input = { enabled = true },
 		notifier = {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
+		picker = { enabled = true, sources = { explorer = {} } },
 		quickfile = { enabled = true },
 		scope = { enabled = false },
 		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
+		statuscolumn = { enabled = false },
 		words = { enabled = true },
 		styles = {
 			notification = {
 				-- wo = { wrap = true } -- Wrap notifications
 			},
 		},
+		notify = { enable = true },
+		notifyer = { enable = true },
 		toggle = { enable = false },
 		lazygit = { enabled = false },
 	},
