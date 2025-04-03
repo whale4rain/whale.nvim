@@ -25,7 +25,7 @@ return {
 		set({ "n", "v" }, "<c-left>", mc.nextCursor)
 		set({ "n", "v" }, "<c-right>", mc.prevCursor)
 		-- 通过匹配单词/选择来添加或跳过添加新光标
-		set({ "n", "v" }, "<c-k>", function()
+		set({ "n", "v" }, "<c-m>", function()
 			mc.matchAddCursor(1)
 		end)
 		set({ "n", "v" }, "<leader>k", function()

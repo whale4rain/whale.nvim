@@ -28,19 +28,19 @@ keymap.set("n", "<C-h>", "<C-w>h", opts)
 keymap.set("n", "<C-j>", "<C-w>j", opts)
 keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
-keymap.set("n", "<leader>sv", "<C-w>v", opts) -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", opts) -- split window horizontally
+keymap.set("n", "<leader>wv", "<C-w>v", { desc = "split window vertically" }) -- split window vertically
+keymap.set("n", "<leader>wh", "<C-w>s", { desc = "split winodw horizontally" }) -- split window horizontally
 -- Better buffer navigation
-keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", opts) -- next buffer
-keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", opts) -- previous buffer
+keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "next buffer" }) -- next buffer
+keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "previous buffer" }) -- previous buffer
 --取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
 -- Resize with arrows
 -- delta: 2 lines
-keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap.set("n", "<S-Up>", ":resize -2<CR>", opts)
+keymap.set("n", "<S-Down>", ":resize +2<CR>", opts)
+keymap.set("n", "<S-Left>", ":vertical resize -2<CR>", opts)
+keymap.set("n", "<S-Right>", ":vertical resize +2<CR>", opts)
 keymap.set("n", "<leader>wd", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 -------------------
 --plugin's keymap--

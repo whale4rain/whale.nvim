@@ -20,5 +20,13 @@ return {
 			c = { "clang-format" },
 			go = { "goimports", "gofmt" },
 		},
+		formatters = {
+			clang_format = {
+				prepend_args = { "--style=file", "--fallback-style=Google" },
+			},
+			shfmt = {
+				prepend_args = { "-i", "4" },
+			},
+		},
 	},
 }
