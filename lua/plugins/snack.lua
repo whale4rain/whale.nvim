@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	config = function()
-		require("plugins.config.snack")
+		require("plugins.setup.snack")
 	end,
 	opts = {
 		bigfile = { enabled = true },

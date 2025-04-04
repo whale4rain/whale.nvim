@@ -1,3 +1,5 @@
+---@function 右上角的文件提示
+
 return {
 	"b0o/incline.nvim",
 	config = function()

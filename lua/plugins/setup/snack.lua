@@ -1,6 +1,6 @@
 ---@diagn
 -- 加载 ASCII 艺术文
-local ascii_art = require("plugins.config.ascii_art_2")
+local ascii_art = require("plugins.setup.ascii_art_2")
 local function random_header()
 	return ascii_art[math.random(10)]
 end

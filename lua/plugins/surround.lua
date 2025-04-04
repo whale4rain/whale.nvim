@@ -1,8 +1,8 @@
 return {
-    "kylechui/nvim-surround",
-    event = { "BufReadPre", "BufNewFile" },
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = true,
+	"kylechui/nvim-surround",
+	event = { "BufReadPre", "BufNewFile" },
+	version = "*", -- Use for stability; omit to use `main` branch for the latest features
+	config = true,
 }
 -- use ys + where (like iw 8j) + " ` ...to add surround
 -- use cs + " ` ... to change surround
