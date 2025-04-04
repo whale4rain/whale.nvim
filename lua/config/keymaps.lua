@@ -1,4 +1,10 @@
 -- define common options
+----------------
+--- memo  ------
+--- ----------
+-- 在文件树按下s可以使用vscode打开文件
+-- gx跳转连接
+
 local opts = {
 	noremap = true, -- non-recursive
 	silent = true, -- do not show message
@@ -86,3 +92,4 @@ keymap.set("x", "I", "I", opts) -- 确保 Shift + I 正常工作
 -- 	":lua require('telescope.builtin').find_files({ cwd = 'C:/Users/86152/AppData/Local/nvim' })<CR>",
 -- 	{ desc = "go to the config file" }
 -- )
+keymap.set("n", "gx", "gx", { desc = "open link undercursor" })
