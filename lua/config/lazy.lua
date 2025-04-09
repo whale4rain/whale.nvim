@@ -28,8 +28,8 @@ if vim.g.neovide then
 	vim.o.guifont = "FiraCode Nerd Font Mono:h11"
 
 	-- 透明
-	-- vim.g.neovide_opacity = 0.9
-	-- vim.g.neovide_normal_opacity = 0.9
+	vim.g.neovide_opacity = 0.7
+	vim.g.neovide_normal_opacity = 0.7
 	-- 窗口颜色
 	vim.g.neovide_title_background_color = "#282828"
 	-- string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
@@ -38,7 +38,10 @@ if vim.g.neovide then
 	vim.g.neovide_no_idle = true
 	-- 记住窗口大小
 	vim.g.neovide_remember_window_size = true
+	vim.g.neovide_cursor_hack = true
+	vim.g.neovide_input_ime = false
 
+	vim.g.neovide_cursor_animate_command_line = true
 	vim.g.neovide_cursor_vfx_mode = "wireframe"
 end
 

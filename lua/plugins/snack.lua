@@ -30,7 +30,7 @@ return {
 		notify = { enable = true },
 		notifyer = { enable = true },
 		toggle = { enable = false },
-		lazygit = { enabled = false },
+		lazygit = { enabled = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
@@ -479,13 +479,13 @@ return {
 			desc = "Git Browse",
 			mode = { "n", "v" },
 		},
-		-- {
-		-- 	"<leader>gg",
-		-- 	function()
-		-- 		Snacks.lazygit()
-		-- 	end,
-		-- 	desc = "Lazygit",
-		-- },
+		{
+			"<leader>lg",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "Lazygit",
+		},
 		{
 			"<leader>un",
 			function()

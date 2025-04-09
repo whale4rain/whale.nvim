@@ -26,7 +26,7 @@ return {
 			preset = "none",
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 			-- fallback命令将运行下一个非闪烁键盘映射(回车键的默认换行等操作需要)
-			["<CR>"] = { "accept", "fallback" }, -- 更改成'select_and_accept'会选择第一项插入
+			["<C-t>"] = { "accept", "fallback" }, -- 更改成'select_and_accept'会选择第一项插入
 			["<C-n>"] = { "select_prev", "snippet_backward", "fallback" },
 			["<C-N>"] = { "select_next", "snippet_forward", "fallback" }, -- 同时存在补全列表和snippet时，补全列表选择优先级更高
 

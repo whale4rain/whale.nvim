@@ -40,7 +40,6 @@ return {
 				"flake8",
 				"black",
 				"clang-format",
-				"cpplint",
 			},
 		})
 	end,
