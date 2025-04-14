@@ -1,10 +1,10 @@
----@diagn
--- 加载 ASCII 艺术文
-local ascii_art = require("plugins.setup.ascii_art_2")
-local function random_header()
-	return ascii_art[math.random(10)]
-end
-
+-- ---@diagn
+-- -- 加载 ASCII 艺术文
+-- local ascii_art = require("plugins.setup.ascii_art_2")
+-- local function random_header()
+-- 	return ascii_art[math.random(10)]
+-- end
+--
 require("snacks").setup({
 	styles = {
 		notification = { border = "single" },
@@ -32,7 +32,22 @@ require("snacks").setup({
 				{ icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
-			header = random_header(),
+			header = [[
+                                  
+                                  
+              )⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀           ⠀
+        )   (    )⠀⠀⠀⠀⠀⠀⠀⠀         ⠀
+      (⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀(                
+         _.---._⠀⠀⠀⠀⠀⠀⠀⠀⠀          
+     .-'/\_/\  ~~`-. _.------------.
+    (  ( "v" )  ~ ~ )-.___________.'
+    |`-._  ~ ~  _.-'|⠀⠀⠀⠀⠀⠀⠀       
+    |    `"""""'    |⠀⠀⠀⠀⠀⠀⠀        
+    |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   |              
+    |⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   |               
+     `-._       _.-'    VK⠀⠀⠀       
+         `"""""'⠀⠀⠀⠀⠀⠀⠀⠀            
+  ]],
 		},
 		sections = {
 			{ section = "header" },

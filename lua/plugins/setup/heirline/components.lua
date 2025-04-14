@@ -1,30 +1,51 @@
 local utils = require("heirline.utils")
 local conditions = require("heirline.conditions")
 
+-- local function setup_colors()
+-- 	return {
+-- 		bright_bg = utils.get_highlight("Folded").bg, --light blackground
+-- 		bright_fg = utils.get_highlight("Folded").fg,
+-- 		red = utils.get_highlight("DiagnosticError").fg, --red
+-- 		dark_red = utils.get_highlight("DiffDelete").bg, --dark_red
+-- 		green = utils.get_highlight("String").fg, --green
+-- 		blue = utils.get_highlight("Function").fg, --green
+-- 		gray = utils.get_highlight("NonText").fg, --gray
+-- 		orange = utils.get_highlight("Constant").fg, --Pink
+-- 		purple = utils.get_highlight("Statement").fg,
+-- 		cyan = utils.get_highlight("Special").fg, -- orange
+-- 		diag_warn = utils.get_highlight("DiagnosticWarn").fg, --yellow
+-- 		diag_error = utils.get_highlight("DiagnosticError").fg, --red
+-- 		diag_hint = utils.get_highlight("DiagnosticHint").fg, --green
+-- 		diag_info = utils.get_highlight("DiagnosticInfo").fg,
+-- 		git_del = utils.get_highlight("diffDeleted").fg,
+-- 		git_add = utils.get_highlight("diffAdded").fg,
+-- 		git_change = utils.get_highlight("diffChanged").fg,
+-- 	}
+-- end
 local function setup_colors()
 	return {
 		bg = utils.get_highlight("BufferLineBackground").bg,
 		fg = utils.get_highlight("BufferLineBackground").fg,
-		bright_bg = utils.get_highlight("Folded").bg, --light blackground
+
+		bright_bg = utils.get_highlight("Folded").bg,
 		bright_fg = utils.get_highlight("Folded").fg,
-		red = utils.get_highlight("DiagnosticError").fg, --red
-		dark_red = utils.get_highlight("DiffDelete").bg, --dark_red
-		green = utils.get_highlight("String").fg, --green
-		blue = utils.get_highlight("Function").fg, --green
-		gray = utils.get_highlight("NonText").fg, --gray
-		orange = utils.get_highlight("Constant").fg, --Pink
+		red = utils.get_highlight("DiagnosticError").fg,
+		dark_red = utils.get_highlight("DiffDelete").bg,
+		green = utils.get_highlight("String").fg,
+		blue = utils.get_highlight("Function").fg,
+		gray = utils.get_highlight("NonText").fg,
+		orange = utils.get_highlight("Constant").fg,
 		purple = utils.get_highlight("Statement").fg,
-		cyan = utils.get_highlight("Special").fg, -- orange
-		diag_warn = utils.get_highlight("DiagnosticWarn").fg, --yellow
-		diag_error = utils.get_highlight("DiagnosticError").fg, --red
-		diag_hint = utils.get_highlight("DiagnosticHint").fg, --green
+		cyan = utils.get_highlight("Special").fg,
+		diag_warn = utils.get_highlight("DiagnosticWarn").fg,
+		diag_error = utils.get_highlight("DiagnosticError").fg,
+		diag_hint = utils.get_highlight("DiagnosticHint").fg,
 		diag_info = utils.get_highlight("DiagnosticInfo").fg,
 		git_del = utils.get_highlight("diffDeleted").fg,
 		git_add = utils.get_highlight("diffAdded").fg,
 		git_change = utils.get_highlight("diffChanged").fg,
 	}
 end
-
 require("heirline").load_colors(setup_colors())
 -- or pass it to config.opts.colors
 
@@ -36,10 +57,19 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	group = "Heirline",
 })
 
---- colorset end
+--- colorset end, ""
 M = {}
 M.Spacer = { provider = " " }
 M.Fill = { provider = "%=" }
+M.RightCircle = {
+	provider = "█",
+	hl = { fg = "red", bg = "bright_bg" },
+}
+
+M.LeftCircle = {
+	provider = "",
+	hl = { fg = "bright_bg", bg = "bright_bg" },
+}
 M.RightPadding = function(child, num_space)
 	local result = {
 		condition = child.condition,
@@ -188,7 +218,8 @@ local FileName = {
 		return filename
 	end,
 
-	hl = { fg = utils.get_highlight("Directory").fg },
+	--	hl = { fg = utils.get_highlight("Directory").fg },
+	hl = { bold = true },
 }
 
 local FileFlags = {
@@ -199,15 +230,18 @@ local FileFlags = {
 		provider = "[+]",
 		hl = { fg = "green" },
 	},
-	{
-		condition = function()
-			return not vim.bo.modifiable or vim.bo.readonly
-		end,
-		provider = "[]",
-		hl = { fg = "orange" },
-	},
 }
 
+-- local FileFlags = {
+-- 	{
+-- 		condition = function()
+-- 			return vim.bo.modified
+-- 		end,
+-- 		provider = "  ",
+-- 		hl = { fg = "red" },
+-- 	},
+--
+-- }
 -- Now, let's say that we want the filename color to change if the buffer is
 -- modified. Of course, we could do that directly using the FileName.hl field,
 -- but we'll see how easy it is to alter existing components using a "modifier"
@@ -217,7 +251,7 @@ local FileNameModifer = {
 	hl = function()
 		if vim.bo.modified then
 			-- use `force` because we need to override the child's hl foreground
-			return { fg = "cyan", bold = true, force = true }
+			return { fg = "purple", bold = true, force = true }
 		end
 	end,
 }
@@ -227,43 +261,10 @@ M.FileNameBlock = utils.insert(
 	FileNameBlock,
 	FileIcon,
 	utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
-	FileFlags,
-	{ provider = " " } -- this means that the statusline is cut here when there's not enough space
+	FileFlags
 )
 
--- M.FileNameBlock = {
--- 	init = function(self)
--- 		-- 图标：根据文件类型获取图标（需要 nvim-web-devicons）
--- 		local filename = vim.api.nvim_buf_get_name(0)
--- 		local extension = vim.fn.fnamemodify(filename, ":e")
--- 		self.icon = require("nvim-web-devicons").get_icon(filename, extension, { default = true }) or " "
--- 		self.icon = self.icon .. " "
---
--- 		-- 文件名：获取相对路径
--- 		self.filename = vim.fn.fnamemodify(filename, ":.")
--- 		if self.filename == "" then
--- 			self.filename = "[No Name]"
--- 		end
---
--- 		-- 文件标志：只读、修改等
--- 		self.flags = {}
--- 		self.flags.readonly = vim.bo.readonly and " " or ""
--- 		self.flags.modified = vim.bo.modified and "● " or ""
--- 	end,
---
--- 	hl = { fg = "blue", bold = true },
---
--- 	provider = function(self)
--- 		-- 动态调整文件名长度
--- 		local display_name = self.filename
--- 		if not conditions.width_percent_below(#display_name, 0.25) then
--- 			display_name = vim.fn.pathshorten(self.filename)
--- 		end
--- 		return self.icon .. display_name .. self.flags.readonly .. self.flags.modified
--- 	end,
--- }
-
-M.FileNameBlock = utils.surround({ "", "" }, "bright_bg", { M.FileNameBlock })
+--M.FileNameBlock = utils.surround({ "", "" }, "bright_bg", { M.FileNameBlock })
 
 M.FileType = {
 	provider = function()
@@ -318,16 +319,22 @@ M.Ruler = {
 	-- %L = number of lines in the buffer
 	-- %c = column number
 	-- %P = percentage through file of displayed window
-	provider = "%7(%l/%3L%):%2c %P",
-}
+	{ provider = "%7(%l/%3L%):%2c %P" },
 
-M.Ruler = utils.surround({ "", "" }, "bright_bg", { M.Ruler })
+	{ provider = " " },
+	-- hl = {
+	-- 	fg = "blue",
+	-- 	bg = "bright_bg",
+	-- },
+}
+--, ""█
+--M.Ruler = utils.surround({ "█", "" }, "purple", { M.Ruler })
 -- I take no credits for this! 🦁
 M.ScrollBar = {
 	static = {
 		sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" },
 		-- Another variant, because the more choice the better.
-		-- sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
+		-- sbar = { '🭶', '🭷', 🭸', '🭹', '🭺', '🭻' }
 	},
 	provider = function(self)
 		local curr_line = vim.api.nvim_win_get_cursor(0)[1]
@@ -335,7 +342,7 @@ M.ScrollBar = {
 		local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
 		return string.rep(self.sbar[i], 2)
 	end,
-	hl = { fg = "blue", bg = "gray" },
+	hl = { fg = "red", bg = "bright_bg" },
 }
 M.LSPActive = {
 	condition = conditions.lsp_attached,
@@ -357,13 +364,13 @@ M.LSPActive = {
 M.Diagnostics = {
 
 	condition = conditions.has_diagnostics,
-	static = { error_icon = " ", warn_icon = " ", hint_icon = "󰠠 ", info_icon = " " },
-	-- static = {
-	-- 	error_icon = "✘", -- 直接使用你在 vim.diagnostic.config() 中定义的图标
-	-- 	warn_icon = "▲",
-	-- 	info_icon = "i",
-	-- 	hint_icon = "➤",
-	-- },
+
+	static = {
+		error_icon = " ",
+		warn_icon = "󰀧 ",
+		info_icon = "󱂷 ",
+		hint_icon = " ",
+	},
 
 	init = function(self)
 		self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
@@ -375,8 +382,8 @@ M.Diagnostics = {
 	update = { "DiagnosticChanged", "BufEnter" },
 
 	{
-		provider = "![",
-		hl = { fg = "orange" },
+		provider = "🙵 [",
+		hl = { bold = true },
 	},
 	{
 		provider = function(self)
@@ -405,9 +412,10 @@ M.Diagnostics = {
 	},
 	{
 		provider = "]",
-		hl = { fg = "orange" },
+		hl = { bold = true },
 	},
 }
+
 M.Git = {
 	condition = conditions.is_git_repo,
 
@@ -436,6 +444,7 @@ M.Git = {
 			local count = self.status_dict.added or 0
 			return count > 0 and ("+" .. count)
 		end,
+		--hl = { fg = "diag_info" },
 		hl = { fg = "diag_info" },
 	},
 	{
@@ -443,14 +452,14 @@ M.Git = {
 			local count = self.status_dict.removed or 0
 			return count > 0 and ("-" .. count)
 		end,
-		hl = { fg = "diag_warn" },
+		hl = { fg = "diag_error" },
 	},
 	{
 		provider = function(self)
 			local count = self.status_dict.changed or 0
 			return count > 0 and ("~" .. count)
 		end,
-		hl = { fg = "diag_hint" },
+		hl = { fg = "diag_warn" },
 	},
 	{
 		condition = function(self)
@@ -461,7 +470,7 @@ M.Git = {
 }
 M.WorkDir = {
 	provider = function()
-		local icon = (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. " "
+		local icon = (vim.fn.haslocaldir(0) == 1 and "󰰍 " or " ") .. " " .. " "
 		local cwd = vim.fn.getcwd(0)
 		cwd = vim.fn.fnamemodify(cwd, ":~")
 		if not conditions.width_percent_below(#cwd, 0.25) then
