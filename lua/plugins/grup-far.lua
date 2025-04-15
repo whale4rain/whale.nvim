@@ -10,5 +10,8 @@ return {
 			-- engine = 'ripgrep' is default, but 'astgrep' or 'astgrep-rules' can
 			-- be specified
 		})
+		vim.keymap.set({ "n", "x" }, "<leader>gs", function()
+			require("grug-far").open({ visualSelectionUsage = "operate-within-range" })
+		end, { desc = "grug-far: Search within range" })
 	end,
 }

@@ -4,6 +4,7 @@ return {
 	version = "*",
 	config = function()
 		-- 设置 PowerShell 相关选项
+
 		local powershell_options = {
 			shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell", -- 优先使用 pwsh，否则使用 powershell
 			shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
@@ -32,11 +33,6 @@ return {
 			shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell", -- 使用 PowerShell 作为默认 shell
 			auto_scroll = true, -- 自动滚动到底部
 			persist_mode = true, -- 保持终端状态
-			highlights = {
-				Normal = {
-					guibg = "#3c3826",
-				},
-			},
 
 			-- 自定义终端
 			terminals = {

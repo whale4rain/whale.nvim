@@ -1,5 +1,6 @@
 return {
 	"stevearc/oil.nvim",
+	event = "VeryLazy",
 	opts = {
 		-- 禁用不必要的功能保持轻量
 		skip_confirm_for_simple_edits = true,
