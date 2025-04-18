@@ -16,6 +16,11 @@ return {
 			translate_problems = true, ---@type boolean
 		},
 	},
+	-- config = function()
+	-- 	vim.keymap.set("n", "<leader>lr", ":Leet run<CR>")
+	-- 	vim.keymap.set("n", "<leader>lc", ":Leet console<CR>")
+	-- 	vim.keymap.set("n", "<leader>ls", ":Leet submit<CR>")
+	-- end,
 }
 -- nvim leetcode.nvim or neovide leetcode.nvim to use
 --Leet opens menu dashboard

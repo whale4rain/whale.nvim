@@ -1,5 +1,4 @@
 require("config.options")
 require("config.keymaps")
 require("config.lazy")
-require("config.lsp.diagnostic")
 -- require("config.lsp.fold")

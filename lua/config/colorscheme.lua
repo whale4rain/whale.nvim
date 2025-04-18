@@ -1,10 +1,40 @@
 return {
 	-- {
+	-- 	"ramojus/mellifluous.nvim",
+	-- 	-- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
+	-- 	config = function()
+	-- 		require("mellifluous").setup({}) -- optional, see configuration section.
+	-- 		vim.cmd("colorscheme mellifluous")
+	-- 	end,
+	-- },
+	-- {
 	-- 	"catppuccin/nvim",
 	-- 	name = "catppuccin",
 	-- 	priority = 1000,
 	-- 	config = function()
 	-- 		vim.cmd.colorscheme("catppuccin")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"datsfilipe/vesper.nvim",
+	-- 	name = "vesper",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("vesper")
+	-- 		require("vesper").setup({
+	-- 			transparent = false, -- Boolean: Sets the background to transparent
+	-- 			italics = {
+	-- 				comments = true, -- Boolean: Italicizes comments
+	-- 				keywords = true, -- Boolean: Italicizes keywords
+	-- 				functions = true, -- Boolean: Italicizes functions
+	-- 				strings = true, -- Boolean: Italicizes strings
+	-- 				variables = true, -- Boolean: Italicizes variables
+	-- 			},
+	-- 			overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+	-- 			palette_overrides = {},
+	-- 		})
+	-- 		require("bufferline").setup({
+	-- 			highlights = require("vesper").bufferline.highlights,
+	-- 		})
 	-- 	end,
 	-- },
 	{
