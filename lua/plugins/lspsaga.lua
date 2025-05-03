@@ -16,7 +16,7 @@ return {
 		})
 		vim.keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Prev Diagnostic" })
 		vim.keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Next Diagnostic" })
-		vim.keymap.set("n", "<leader>fi", "<cmd>Lspsaga lsp_finder<cr>", { desc = "Lspsaga Finder" })
+		vim.keymap.set("n", "<leader>fi", "<cmd>Lspsaga finder<cr>", { desc = "Lspsaga Finder" })
 		vim.keymap.set("n", "<leader>fo", "<cmd>Lspsaga outline<cr>", { desc = "Lspsaga Outline" })
 	end,
 }

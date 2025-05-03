@@ -1,12 +1,12 @@
 return {
-	-- {
-	-- 	"ramojus/mellifluous.nvim",
-	-- 	-- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
-	-- 	config = function()
-	-- 		require("mellifluous").setup({}) -- optional, see configuration section.
-	-- 		vim.cmd("colorscheme mellifluous")
-	-- 	end,
-	-- },
+	{
+		"ramojus/mellifluous.nvim",
+		-- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
+		config = function()
+			require("mellifluous").setup({}) -- optional, see configuration section.
+			vim.cmd("colorscheme mellifluous")
+		end,
+	},
 	-- {
 	-- 	"catppuccin/nvim",
 	-- 	name = "catppuccin",
@@ -37,13 +37,13 @@ return {
 	-- 		})
 	-- 	end,
 	-- },
-	{
-		"ellisonleao/gruvbox.nvim",
-		name = "gruvbox",
-		config = function()
-			vim.cmd("colorscheme gruvbox")
-		end,
-	},
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	name = "gruvbox",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme gruvbox")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"rose-pine/neovim",
 	-- 	name = "rose-pine",
