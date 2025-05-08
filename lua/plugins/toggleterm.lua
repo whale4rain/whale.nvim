@@ -62,6 +62,6 @@ return {
 		keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle vertical terminal" })
 
 		-- 打开/关闭标签页终端
-		keymap.set("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<cr>", { desc = "Toggle tab terminal" })
+		keymap.set("n", "<leader>tp", "<cmd>ToggleTerm direction=tab<cr>", { desc = "Toggle tab terminal" })
 	end,
 }
