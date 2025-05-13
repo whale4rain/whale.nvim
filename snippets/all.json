@@ -1,0 +1,7 @@
+{
+  "test": {
+    "prefix": "test",
+    "body": "print(\"Hello World\")",
+    "description": "Prints 'Hello World' to the console"
+  }
+}

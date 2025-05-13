@@ -1,15 +1,14 @@
 return {
 	"saghen/blink.cmp",
-	event = "InsertEnter",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		-- "L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
-		"mikavilpas/blink-ripgrep.nvim",
+		"xzbdmw/colorful-menu.nvim",
 	},
-
 	version = "*",
-	---@module 'blink.cmp'
-	---@type blink.cmp.Config
 	opts = {
+		--		snippets = { preset = "luasnip" },
 		cmdline = {
 			keymap = {
 				-- 选择并接受预选择的第一个
@@ -24,18 +23,8 @@ return {
 		},
 
 		keymap = {
-			preset = "none",
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-			-- fallback命令将运行下一个非闪烁键盘映射(回车键的默认换行等操作需要)
-			["<C-t>"] = { "accept", "fallback" }, -- 更改成'select_and_accept'会选择第一项插入
-			["<C-n>"] = { "select_prev", "snippet_backward", "fallback" },
-			["<C-N>"] = { "select_next", "snippet_forward", "fallback" }, -- 同时存在补全列表和snippet时，补全列表选择优先级更高
-
-			["<C-b>"] = { "scroll_documentation_up", "fallback" },
-			["<C-f>"] = { "scroll_documentation_down", "fallback" },
-
-			["<C-e>"] = { "snippet_forward", "select_next", "fallback" }, -- 同时存在补全列表和snippet时，snippet跳转优先级更高
-			["<C-u>"] = { "snippet_backward", "select_prev", "fallback" },
+			["<C-u>"] = { "scroll_documentation_up", "fallback" },
+			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		},
 		completion = {
 			-- 示例：使用'prefix'对于'foo_|_bar'单词将匹配'foo_'(光标前面的部分),使用'full'将匹配'foo__bar'(整个单词)
@@ -45,37 +34,31 @@ return {
 			-- 不预选第一个项目，选中后自动插入该项目文本
 			list = { selection = { preselect = false, auto_insert = true } },
 		},
-
-		-- 指定文件类型启用/禁用
-		enabled = function()
-			return not vim.tbl_contains({
-				"markdown",
-			}, vim.bo.filetype) and vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
-		end,
-
-		-- -- 已定义启用的提供程序的默认列表，以便您可以扩展它
-		-- sources = {
-		-- 	default = {
-		-- 		"buffer",
-		-- 		"ripgrep",
-		-- 		"lsp",
-		-- 		"path",
-		-- 		"snippets",
-		-- 	},
-		-- 	providers = {
-		-- 		-- score_offset设置优先级数字越大优先级越高
-		-- 		buffer = { score_offset = 5 },
-		-- 		ripgrep = {
-		-- 			module = "blink-ripgrep",
-		-- 			name = "Ripgrep",
-		-- 			score_offset = 4,
-		-- 		},
-		-- 		path = { score_offset = 3 },
-		-- 		lsp = { score_offset = 2 },
-		-- 		snippets = { score_offset = 1 },
-		-- 	},
-		-- },
+		signature = {
+			enabled = true,
+		},
 	},
-	-- 由于“opts_extend”，您的配置中的其他位置无需重新定义它
-	opts_extend = { "sources.default" },
+	config = function()
+		require("blink.cmp").setup({
+			completion = {
+				menu = {
+					draw = {
+						-- We don't need label_description now because label and label_description are already
+						-- combined together in label by colorful-menu.nvim.
+						columns = { { "kind_icon" }, { "label", gap = 1 } },
+						components = {
+							label = {
+								text = function(ctx)
+									return require("colorful-menu").blink_components_text(ctx)
+								end,
+								highlight = function(ctx)
+									return require("colorful-menu").blink_components_highlight(ctx)
+								end,
+							},
+						},
+					},
+				},
+			},
+		})
+	end,
 }
