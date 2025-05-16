@@ -31,9 +31,9 @@ if vim.g.neovide then
 	vim.g.neovide_opacity = 1 --0.75
 	vim.g.neovide_normal_opacity = 1 -- 0.75
 	-- 窗口颜色
-	vim.g.neovide_title_background_color = "#282828"
+	vim.g.neovide_title_background_color = "#2a273f"
 	-- string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
-	vim.g.neovide_title_text_color = "#ebdbb2"
+	vim.g.neovide_title_text_color = "#e0def4"
 	-- 无空闲
 	vim.g.neovide_no_idle = true
 	-- 记住窗口大小
