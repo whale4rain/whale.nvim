@@ -29,7 +29,6 @@ return {
 				},
 			},
 		})
-
 		local keymap = vim.keymap -- for conciseness
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -64,5 +63,12 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+		-- vim.lsp.config("clangd", {
+		-- 	settings = {
+		-- 		["clangd-format"] = {
+		-- 			command = "",
+		-- 		},
+		-- 	},
+		-- })
 	end,
 }

@@ -1,6 +1,7 @@
 -- time-machine.lua
 return {
 	"y3owk1n/time-machine.nvim",
+	event = "VeryLazy",
 	version = "*", -- remove this if you want to use the `main` branch
 	opts = {
 		-- your configuration comes

@@ -26,3 +26,18 @@ opt.incsearch = true -- search as characters are entered
 opt.hlsearch = false -- do not highlight matches
 opt.ignorecase = true -- ignore case in searches by default
 opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+
+-- whitspace characters shows
+-- opt.list = true
+--
+-- vim.opt.listchars = {
+-- 	--tab = "󰌒 ", -- 制表符
+-- 	-- trail = "·", -- 行尾空格
+-- 	--nbsp = "󱁐", -- 非断行空格
+-- 	-- extends = "»", -- 当文本超出屏幕右侧时的指示符
+-- 	-- precedes = "«", -- 当文本超出屏幕左侧时的指示符
+-- 	-- space = "󱁐", -- 普通空格
+-- 	-- tab = " ",
+-- 	eol = "󰌑", -- 行尾换行符
+-- 	--conceal = "┊", -- 被隐藏的字符
+-- }
