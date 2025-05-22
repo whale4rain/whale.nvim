@@ -37,10 +37,10 @@
 -- }
 
 --21dain
-return {
-	"alanfortlink/blackjack.nvim",
-	requires = { "nvim-lua/plenary.nvim" },
-}
+-- return {
+-- 	"alanfortlink/blackjack.nvim",
+-- 	requires = { "nvim-lua/plenary.nvim" },
+-- }
 -- require("blackjack").setup({
 --   card_style = "mini", -- Can be "mini" or "large".
 --   suit_style = "black", -- Can be "black" or "white".

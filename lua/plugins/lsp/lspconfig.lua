@@ -7,28 +7,11 @@ return {
 	},
 	config = function()
 		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-		lspconfig.ruff.setup({
-			init_options = {
-				settings = {
-					-- Ruff language server settings go here
-					enable = true,
-					lint = {
-						enabled = true,
-						run = "onsave",
-						max_line_length = 120,
-					},
-					format = {
-						enabled = true,
-						run = "onSave",
-					},
-					fix = {
-						enabled = false,
-						run = "onSave",
-					},
-				},
-			},
-		})
+		vim.lsp.enable("clangd")
+		vim.lsp.enable("rust_analyzer")
+		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("ruff")
+
 		local keymap = vim.keymap -- for conciseness
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -63,12 +46,5 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-		-- vim.lsp.config("clangd", {
-		-- 	settings = {
-		-- 		["clangd-format"] = {
-		-- 			command = "",
-		-- 		},
-		-- 	},
-		-- })
 	end,
 }
