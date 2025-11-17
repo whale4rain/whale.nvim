@@ -41,3 +41,12 @@ opt.smartcase = true -- but make it case sensitive if an uppercase is entered
 -- 	eol = "󰌑", -- 行尾换行符
 -- 	--conceal = "┊", -- 被隐藏的字符
 -- }
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "cpp",
+	callback = function()
+		vim.bo.shiftwidth = 4
+		vim.bo.softtabstop = 4
+		vim.bo.expandtab = true
+	end,
+})

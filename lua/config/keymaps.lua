@@ -37,10 +37,10 @@ keymap.set("n", "<C-l>", "<C-w>l", opts)
 keymap.set("n", "<leader>wv", "<C-w>v", { desc = "split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>wh", "<C-w>s", { desc = "split winodw horizontally" }) -- split window horizontally
 -- Better buffer navigation
-keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "next buffer" }) -- next buffer
-keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "previous buffer" }) -- previous buffer
+keymap.set("n", "<leader>bn", "<cmd>BufferLineCycleNext<CR>", { desc = "next buffer" }) -- next buffer
+keymap.set("n", "<leader>bp", "<cmd>BufferLineCyclePrev<CR>", { desc = "previous buffer" }) -- previous buffer
 --取消高亮
-keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
+--keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
 -- Resize with arrows
 -- delta: 2 lines
 keymap.set("n", "<S-Up>", ":resize -2<CR>", opts)

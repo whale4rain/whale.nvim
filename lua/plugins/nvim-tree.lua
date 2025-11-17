@@ -68,3 +68,12 @@ return {
 		)
 	end,
 }
+
+-- return {
+-- 	"echasnovski/mini.files",
+-- 	config = function()
+-- 		require("mini.files").setup()
+-- 		vim.keymap.set("n", "<leader>ee", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle file explorer" }) -- toggle file
+-- 	end,
+-- 	version = "*",
+-- }
