@@ -1,3 +1,4 @@
+--@function: make coding interesting
 return {
 	"gisketch/triforce.nvim",
 	dependencies = {

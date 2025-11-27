@@ -1,3 +1,4 @@
+-- when the background color of the curosr in
 return {
 	"mvllow/modes.nvim",
 	version = "v0.2.1",
