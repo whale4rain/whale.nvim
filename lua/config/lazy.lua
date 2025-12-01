@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
 -- 设置for Neovide
 if vim.g.neovide then
 	-- 字体

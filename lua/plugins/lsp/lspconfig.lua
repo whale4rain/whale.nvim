@@ -37,14 +37,23 @@ return {
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,
 		})
-		-- used to enable autocompletion (assign to every lsp server config)
 		-- -- 设置各种服务器的配置
-		-- add signs to diagnostics
-		--local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		local signs = { Error = " x", Warn = " !", Hint = " ?", Info = " i" }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		vim.diagnostic.config({
+			-- 配置 diagnostics 符号
+			signs = {
+				active = true,
+				-- 使用 text 键来定义符号内容。键必须是 "Error", "Warn", "Hint", "Info"。
+				text = {
+					Error = " x",
+					Warn = " !",
+					Hint = " ?",
+					Info = " i",
+				},
+			},
+			-- 其他常用设置（可选）
+			virtual_text = true, -- 是否在行尾显示诊断消息
+			update_in_insert = false, -- 是否在插入模式下更新诊断
+			severity_sort = true, -- 是否根据严重性排序诊断
+		})
 	end,
 }

@@ -36,10 +36,42 @@ return {
 			ensure_installed = {
 				"stylua",
 				"prettier",
-				"isort",
-				"flake8",
-				"black",
 				"clang-format",
+			},
+		})
+		local lspconfig = require("lspconfig")
+		local mason_lspconfig = require("mason-lspconfig")
+		local neodev = require("neodev")
+
+		-- 启用 neodev 来增强 Neovim Lua 运行时环境的诊断
+		neodev.setup({})
+
+		-- 1. 配置 lspconfig (通过 mason-lspconfig)
+		mason_lspconfig.setup({
+			ensure_installed = {
+				"lua_ls",
+				"clangd",
+				"rust_analyzer",
+				"ruff",
+			},
+			handlers = {
+				-- 默认配置
+				function(server_name)
+					lspconfig[server_name].setup({})
+				end,
+
+				-- 为 lua_ls 提供特定配置
+				["lua_ls"] = function()
+					lspconfig.lua_ls.setup({
+						settings = {
+							lua = {
+								diagnostics = {
+									globals = { "vim", "require" },
+								},
+							},
+						},
+					})
+				end,
 			},
 		})
 	end,
