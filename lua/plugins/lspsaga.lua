@@ -14,9 +14,9 @@ return {
 			ui = {
 				code_action = "",
 			},
-			lightbulb = {
-				virtual_text = false,
-			},
+			-- lightbulb = {
+			-- 	virtual_text = false,
+			-- },
 		})
 		vim.keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Prev Diagnostic" })
 		vim.keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Next Diagnostic" })

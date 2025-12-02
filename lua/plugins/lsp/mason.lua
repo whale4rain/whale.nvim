@@ -48,6 +48,7 @@ return {
 
 		-- 1. 配置 lspconfig (通过 mason-lspconfig)
 		mason_lspconfig.setup({
+
 			ensure_installed = {
 				"lua_ls",
 				"clangd",
@@ -61,17 +62,17 @@ return {
 				end,
 
 				-- 为 lua_ls 提供特定配置
-				["lua_ls"] = function()
-					lspconfig.lua_ls.setup({
-						settings = {
-							lua = {
-								diagnostics = {
-									globals = { "vim", "require" },
-								},
-							},
-						},
-					})
-				end,
+				-- ["lua_ls"] = function()
+				-- 	lspconfig.lua_ls.setup({
+				-- 		settings = {
+				-- 			lua = {
+				-- 				diagnostics = {
+				-- 					globals = { "vim", "require" },
+				-- 				},
+				-- 			},
+				-- 		},
+				-- 	})
+				-- end,
 			},
 		})
 	end,
