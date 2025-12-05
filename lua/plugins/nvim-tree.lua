@@ -57,8 +57,6 @@ return {
 		) -- toggle file explorer on current file
 		keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
 		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-		-- 打开当前buffer的文件所在目录
-		-- 打开当前 buffer 的文件所在目录
 		-- 新增：在当前文件所在目录打开 nvim-tree
 		keymap.set(
 			"n",
@@ -68,12 +66,3 @@ return {
 		)
 	end,
 }
-
--- return {
--- 	"echasnovski/mini.files",
--- 	config = function()
--- 		require("mini.files").setup()
--- 		vim.keymap.set("n", "<leader>ee", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle file explorer" }) -- toggle file
--- 	end,
--- 	version = "*",
--- }

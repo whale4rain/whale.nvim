@@ -2,7 +2,6 @@ return {
 	"saghen/blink.cmp",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		-- "L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
 		"xzbdmw/colorful-menu.nvim",
 	},

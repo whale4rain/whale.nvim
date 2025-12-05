@@ -43,12 +43,7 @@ return {
 			signs = {
 				active = true,
 				-- 使用 text 键来定义符号内容。键必须是 "Error", "Warn", "Hint", "Info"。
-				text = {
-					Error = " x",
-					Warn = " !",
-					Hint = " ?",
-					Info = " i",
-				},
+				text = { Error = " x", Warn = " !", Hint = " ?", Info = " i" },
 			},
 			-- 其他常用设置（可选）
 			virtual_text = true, -- 是否在行尾显示诊断消息

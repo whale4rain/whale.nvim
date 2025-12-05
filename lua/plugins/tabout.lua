@@ -32,11 +32,4 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		priority = 1000,
 	},
-	-- {
-	-- 	"L3MON4D3/LuaSnip",
-	-- 	keys = function()
-	-- 		-- Disable default tab keybinding in LuaSnip
-	-- 		return {}
-	-- 	end,
-	-- },
 }

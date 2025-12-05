@@ -31,6 +31,7 @@ return {
 		notifyer = { enable = true },
 		toggle = { enable = false },
 		lazygit = { enabled = true },
+		todo_comments = { enable = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
@@ -193,13 +194,6 @@ return {
 		},
 		-- Grep
 		{
-			"<leader>sb",
-			function()
-				Snacks.picker.lines()
-			end,
-			desc = "Buffer Lines",
-		},
-		{
 			"<leader>sB",
 			function()
 				Snacks.picker.grep_buffers()
@@ -251,20 +245,12 @@ return {
 			desc = "Buffer Lines",
 		},
 		-- {
-		-- 	"<leader>sc",
+		-- 	"<leader>sd",
 		-- 	function()
-		-- 		Snacks.picker.command_history()
+		-- 		Snacks.picker.diagnostics()
 		-- 	end,
-		-- 	desc = "Command History",
+		-- 	desc = "Diagnostics",
 		-- },
-
-		{
-			"<leader>sd",
-			function()
-				Snacks.picker.diagnostics()
-			end,
-			desc = "Diagnostics",
-		},
 		{
 			"<leader>sD",
 			function()
@@ -314,13 +300,6 @@ return {
 		-- 	end,
 		-- 	desc = "Location List",
 		-- },
-		{
-			"<leader>sm",
-			function()
-				Snacks.picker.marks()
-			end,
-			desc = "Marks",
-		},
 		-- {
 		-- 	"<leader>sM",
 		-- 	function()
