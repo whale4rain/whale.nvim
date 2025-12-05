@@ -38,29 +38,17 @@ return {
 		mason_lspconfig.setup({
 
 			ensure_installed = {
-				"lua_ls",
-				"clangd",
-				"rust_analyzer",
-				"ruff",
+				-- "lua_ls",
+				-- "clangd",
+				-- "rust_analyzer",
+				-- "ruff",
+				-- "gopls",
 			},
 			handlers = {
 				-- 默认配置
 				function(server_name)
 					lspconfig[server_name].setup({})
 				end,
-
-				-- 为 lua_ls 提供特定配置
-				-- ["lua_ls"] = function()
-				-- 	lspconfig.lua_ls.setup({
-				-- 		settings = {
-				-- 			lua = {
-				-- 				diagnostics = {
-				-- 					globals = { "vim", "require" },
-				-- 				},
-				-- 			},
-				-- 		},
-				-- 	})
-				-- end,
 			},
 		})
 	end,
