@@ -4,9 +4,6 @@ return {
 		"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
 		"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
 	},
-	init = function()
-		vim.g.barbar_auto_setup = false
-	end,
 	version = "^1.0.0", -- optional: only update when a new 1.x version is released
 	config = function()
 		vim.g.barbar_auto_setup = false -- disable auto-setup
@@ -17,14 +14,14 @@ return {
 			--       The defaults are suitable for most people.
 
 			-- Enable/disable animations
-			animation = true,
+			animation = false,
 
 			-- Automatically hide the tabline when there are this many buffers left.
 			-- Set to any value >=0 to enable.
 			auto_hide = false,
 
 			-- Enable/disable current/total tabpages indicator (top right corner)
-			tabpages = true,
+			tabpages = false,
 
 			-- Enables/disable clickable tabs
 			--  - left-click: go to buffer
@@ -49,7 +46,7 @@ return {
 			highlight_inactive_file_icons = false,
 
 			-- Enable highlighting visible buffers
-			highlight_visible = true,
+			highlight_visible = false,
 
 			icons = {
 				-- Configure the base icons on the bufferline.

@@ -30,28 +30,8 @@ return {
 			natural_order = true,
 		},
 	},
-	-- 按需加载
-	cmd = "Oil",
-	keys = {
-		{ "-", "<cmd>Oil<CR>", desc = "打开文件浏览器" },
-	},
 	config = function(_, opts)
+		vim.keymap.set("n", "-", ":Oil<CR>")
 		require("oil").setup(opts)
-	end,
-	config = function()
-		function _G.get_oil_winbar()
-			local dir = require("oil").get_current_dir()
-			if dir then
-				return vim.fn.fnamemodify(dir, ":~")
-			else
-				return vim.api.nvim_buf_get_name(0)
-			end
-		end
-		require("oil").setup({
-			default_file_explorer = true,
-			win_options = {
-				winbar = "%!v:lua.get_oil_winbar()",
-			},
-		})
 	end,
 }
