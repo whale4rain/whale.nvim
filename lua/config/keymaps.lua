@@ -72,3 +72,10 @@ keymap.set("x", "I", "I", opts) -- 确保 Shift + I 正常工作
 ---self  made --
 -----------------
 keymap.set("n", "gx", "gx", { desc = "open link undercursor" })
+
+keymap.set("n", "<C-c>", '"+y', opts)
+keymap.set("v", "<C-c>", '"+y', opts)
+keymap.set("n", "<C-v>", '"+p', opts)
+keymap.set("i", "<C-v>", "<C-r>+", opts)
+keymap.set("n", "<C-z>", "u", opts)
+keymap.set("i", "<C-z>", "u", opts)

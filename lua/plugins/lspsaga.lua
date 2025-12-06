@@ -7,10 +7,10 @@ return {
 	},
 	config = function()
 		require("lspsaga").setup({
-			symbol_in_winbar = {
-				enable = false,
-				--show_file = false,
-			},
+			-- symbol_in_winbar = {
+			-- 	enable = false,
+			-- 	--show_file = false,
+			-- },
 			ui = {
 				code_action = "",
 			},

@@ -17,7 +17,7 @@ return {
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			cpp = { "clang-format" },
 			c = { "clang-format" },
-			go = { "goimports", "gofmt" },
+			go = { "gofmt" },
 		},
 		formatters = {
 			clang_format = {
@@ -48,6 +48,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				cpp = { "clang-format" },
+				go = { "gofmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

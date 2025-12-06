@@ -2,12 +2,10 @@ return {
 	"williamboman/mason.nvim",
 
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		local mason = require("mason")
-		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
 		-- enable mason and configure icons
@@ -27,29 +25,23 @@ return {
 				"clang-format",
 			},
 		})
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
-		local neodev = require("neodev")
-
-		-- 启用 neodev 来增强 Neovim Lua 运行时环境的诊断
-		neodev.setup({})
 
 		-- 1. 配置 lspconfig (通过 mason-lspconfig)
-		mason_lspconfig.setup({
-
-			ensure_installed = {
-				-- "lua_ls",
-				-- "clangd",
-				-- "rust_analyzer",
-				-- "ruff",
-				-- "gopls",
-			},
-			handlers = {
-				-- 默认配置
-				function(server_name)
-					lspconfig[server_name].setup({})
-				end,
-			},
-		})
+		-- mason_lspconfig.setup({
+		--
+		-- 	ensure_installed = {
+		-- 		-- "lua_ls",
+		-- 		-- "clangd",
+		-- 		-- "rust_analyzer",
+		-- 		-- "ruff",
+		-- 		-- "gopls",
+		-- 	},
+		-- 	handlers = {
+		-- 		-- 默认配置
+		-- 		function(server_name)
+		-- 			lspconfig[server_name].setup({})
+		-- 		end,
+		-- 	},
+		-- })
 	end,
 }
