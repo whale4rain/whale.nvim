@@ -52,6 +52,11 @@ set_hl("PmenuSel", { fg = palette.bg, bg = palette.keyword })
 set_hl("VertSplit", { fg = palette.invisibles })
 set_hl("WinSeparator", { fg = palette.invisibles })
 
+-- Macro recording and mode messages
+set_hl("ModeMsg", { fg = palette.number, bold = true })  -- Mode messages (like --RECORDING--)
+set_hl("MsgArea", { link = "Normal" })  -- Message area
+set_hl("MoreMsg", { fg = palette.comment, bold = true })  -- More prompt
+
 -- Syntax Highlights
 set_hl("Comment", { fg = palette.comment })
 set_hl("String", { fg = palette.string })
@@ -109,14 +114,204 @@ set_hl("cssImportant", { fg = palette.number, bold = true }) -- CSS important ->
 
 -- Treesitter standard groups (linking to standard groups)
 set_hl("@variable", { link = "Identifier" })
+set_hl("@variable.builtin", { fg = palette.builtin_constant, bold = true })
+set_hl("@variable.parameter", { fg = palette.fg, italic = true })
+set_hl("@variable.member", { fg = palette.fg })
+
 set_hl("@function", { link = "Function" })
+set_hl("@function.builtin", { fg = palette.func, bold = true })
+set_hl("@function.call", { fg = palette.func })
+set_hl("@function.macro", { fg = palette.keyword, bold = true })
+set_hl("@function.method", { fg = palette.func })
+set_hl("@function.method.call", { fg = palette.func })
+
 set_hl("@keyword", { link = "Keyword" })
+set_hl("@keyword.function", { fg = palette.keyword, bold = true })
+set_hl("@keyword.operator", { fg = palette.keyword, bold = true })
+set_hl("@keyword.return", { fg = palette.keyword, bold = true })
+set_hl("@keyword.conditional", { fg = palette.keyword, bold = true })
+set_hl("@keyword.repeat", { fg = palette.keyword, bold = true })
+set_hl("@keyword.import", { fg = palette.keyword, bold = true })
+
 set_hl("@string", { link = "String" })
+set_hl("@string.escape", { fg = palette.builtin_constant, bold = true })
+set_hl("@string.special", { fg = palette.builtin_constant })
+
 set_hl("@comment", { link = "Comment" })
 set_hl("@type", { link = "Type" })
+set_hl("@type.builtin", { fg = palette.keyword, bold = true })
+set_hl("@type.definition", { fg = palette.keyword, bold = true })
+
 set_hl("@constant", { link = "Constant" })
+set_hl("@constant.builtin", { fg = palette.builtin_constant, bold = true })
 set_hl("@constructor", { link = "Function" })
 set_hl("@operator", { link = "Operator" })
+
+set_hl("@property", { fg = palette.fg })
+set_hl("@attribute", { fg = palette.number })
+set_hl("@namespace", { fg = palette.keyword })
+set_hl("@module", { fg = palette.keyword })
+
 set_hl("@tag", { link = "htmlTag" })
 set_hl("@tag.attribute", { link = "htmlArg" })
-set_hl("@property", { link = "cssProp" }) -- CSS property often maps here in TS
+set_hl("@tag.delimiter", { fg = palette.keyword })
+
+set_hl("@punctuation.delimiter", { fg = palette.fg })
+set_hl("@punctuation.bracket", { fg = palette.fg })
+set_hl("@punctuation.special", { fg = palette.fg })
+
+set_hl("@number", { link = "Number" })
+set_hl("@boolean", { link = "Boolean" })
+
+-- LSP Semantic Tokens
+set_hl("@lsp.type.class", { link = "Type" })
+set_hl("@lsp.type.decorator", { fg = palette.func })
+set_hl("@lsp.type.enum", { link = "Type" })
+set_hl("@lsp.type.enumMember", { fg = palette.builtin_constant })
+set_hl("@lsp.type.function", { link = "Function" })
+set_hl("@lsp.type.interface", { link = "Type" })
+set_hl("@lsp.type.macro", { fg = palette.keyword, bold = true })
+set_hl("@lsp.type.method", { link = "Function" })
+set_hl("@lsp.type.namespace", { fg = palette.keyword })
+set_hl("@lsp.type.parameter", { fg = palette.fg, italic = true })
+set_hl("@lsp.type.property", { fg = palette.fg })
+set_hl("@lsp.type.struct", { link = "Type" })
+set_hl("@lsp.type.type", { link = "Type" })
+set_hl("@lsp.type.typeParameter", { link = "Type" })
+set_hl("@lsp.type.variable", { link = "Identifier" })
+
+-- LSP 语义修饰符
+set_hl("@lsp.mod.readonly", { fg = palette.builtin_constant })
+set_hl("@lsp.mod.deprecated", { strikethrough = true, fg = palette.comment })
+set_hl("@lsp.mod.defaultLibrary", { fg = palette.builtin_constant })
+
+-- Diagnostic highlights
+set_hl("DiagnosticError", { fg = palette.number })
+set_hl("DiagnosticWarn", { fg = palette.string })
+set_hl("DiagnosticInfo", { fg = palette.keyword })
+set_hl("DiagnosticHint", { fg = palette.comment })
+
+set_hl("DiagnosticUnderlineError", { undercurl = true, sp = palette.number })
+set_hl("DiagnosticUnderlineWarn", { undercurl = true, sp = palette.string })
+set_hl("DiagnosticUnderlineInfo", { undercurl = true, sp = palette.keyword })
+set_hl("DiagnosticUnderlineHint", { undercurl = true, sp = palette.comment })
+
+-- Git signs
+set_hl("GitSignsAdd", { fg = palette.comment })
+set_hl("GitSignsChange", { fg = palette.string })
+set_hl("GitSignsDelete", { fg = palette.number })
+
+-- 确保没有使用青色或荧光绿
+set_hl("SpecialKey", { fg = palette.invisibles })
+set_hl("NonText", { fg = palette.invisibles })
+set_hl("Whitespace", { fg = palette.invisibles })
+
+-- NvimTree specific highlights
+set_hl("NvimTreeNormal", { link = "Normal" })
+set_hl("NvimTreeRootFolder", { fg = palette.keyword, bold = true })
+set_hl("NvimTreeFolderName", { fg = palette.keyword })
+set_hl("NvimTreeFolderIcon", { fg = palette.keyword })  -- Override default blue #8094b4
+set_hl("NvimTreeOpenedFolderName", { fg = palette.keyword, bold = true })
+set_hl("NvimTreeEmptyFolderName", { fg = palette.keyword })
+set_hl("NvimTreeSymlink", { fg = palette.func })
+set_hl("NvimTreeExecFile", { fg = palette.func, bold = true })
+set_hl("NvimTreeImageFile", { fg = palette.func })
+set_hl("NvimTreeSpecialFile", { fg = palette.func, underline = true })
+set_hl("NvimTreeFileIcon", { link = "Normal" })
+
+-- NvimTree Git status (避免使用Statement link的绿色)
+set_hl("NvimTreeGitDirty", { fg = palette.string })  -- Modified: orange
+set_hl("NvimTreeGitDirtyIcon", { fg = palette.string })
+set_hl("NvimTreeGitStaged", { fg = palette.comment })  -- Staged: green
+set_hl("NvimTreeGitStagedIcon", { fg = palette.comment })
+set_hl("NvimTreeGitMerge", { fg = palette.func })  -- Merge: magenta
+set_hl("NvimTreeGitMergeIcon", { fg = palette.func })
+set_hl("NvimTreeGitRenamed", { fg = palette.css_pseudo })  -- Renamed: orange
+set_hl("NvimTreeGitRenamedIcon", { fg = palette.css_pseudo })
+set_hl("NvimTreeGitNew", { fg = palette.comment })  -- New: green
+set_hl("NvimTreeGitNewIcon", { fg = palette.comment })
+set_hl("NvimTreeGitDeleted", { fg = palette.number })  -- Deleted: red
+set_hl("NvimTreeGitDeletedIcon", { fg = palette.number })
+set_hl("NvimTreeGitIgnored", { fg = palette.invisibles })
+set_hl("NvimTreeGitIgnoredIcon", { fg = palette.invisibles })
+
+-- NvimTree Git folder status
+set_hl("NvimTreeGitDirtyFolderHL", { fg = palette.string })
+set_hl("NvimTreeGitStagedFolderHL", { fg = palette.comment })
+set_hl("NvimTreeGitMergeFolderHL", { fg = palette.func })
+set_hl("NvimTreeGitRenamedFolderHL", { fg = palette.css_pseudo })
+set_hl("NvimTreeGitNewFolderHL", { fg = palette.comment })
+set_hl("NvimTreeGitDeletedFolderHL", { fg = palette.number })
+set_hl("NvimTreeGitIgnoredFolderHL", { fg = palette.invisibles })
+
+-- NvimTree Diagnostic highlights
+set_hl("NvimTreeLspDiagnosticsError", { fg = palette.number })
+set_hl("NvimTreeLspDiagnosticsErrorIcon", { fg = palette.number })
+set_hl("NvimTreeLspDiagnosticsWarning", { fg = palette.string })
+set_hl("NvimTreeLspDiagnosticsWarningIcon", { fg = palette.string })
+set_hl("NvimTreeLspDiagnosticsInformation", { fg = palette.keyword })
+set_hl("NvimTreeLspDiagnosticsInformationIcon", { fg = palette.keyword })
+set_hl("NvimTreeLspDiagnosticsHint", { fg = palette.comment })
+set_hl("NvimTreeLspDiagnosticsHintIcon", { fg = palette.comment })
+
+set_hl("NvimTreeDiagnosticErrorFileHL", { fg = palette.number })
+set_hl("NvimTreeDiagnosticWarnFileHL", { fg = palette.string })
+set_hl("NvimTreeDiagnosticInfoFileHL", { fg = palette.keyword })
+set_hl("NvimTreeDiagnosticHintFileHL", { fg = palette.comment })
+
+set_hl("NvimTreeDiagnosticErrorFolderHL", { fg = palette.number })
+set_hl("NvimTreeDiagnosticWarnFolderHL", { fg = palette.string })
+set_hl("NvimTreeDiagnosticInfoFolderHL", { fg = palette.keyword })
+set_hl("NvimTreeDiagnosticHintFolderHL", { fg = palette.comment })
+
+-- NvimTree Decorators
+set_hl("NvimTreeModifiedIcon", { fg = palette.string })
+set_hl("NvimTreeModifiedFileHL", { fg = palette.string })
+set_hl("NvimTreeModifiedFolderHL", { fg = palette.string })
+set_hl("NvimTreeOpenedHL", { fg = palette.keyword, bold = true })
+set_hl("NvimTreeOpenedFolderIcon", { fg = palette.keyword, bold = true })
+set_hl("NvimTreeHiddenIcon", { fg = palette.invisibles })
+set_hl("NvimTreeHiddenFileHL", { fg = palette.invisibles })
+set_hl("NvimTreeHiddenFolderHL", { fg = palette.invisibles })
+set_hl("NvimTreeBookmarkIcon", { fg = palette.func })
+set_hl("NvimTreeBookmarkHL", { fg = palette.func })
+set_hl("NvimTreeCopiedHL", { fg = palette.css_pseudo })
+set_hl("NvimTreeCutHL", { fg = palette.number })
+
+-- NvimTree Window picker
+set_hl("NvimTreeWindowPicker", { fg = palette.bg, bg = palette.keyword, bold = true })
+set_hl("NvimTreeCursorLine", { bg = palette.line_highlight })
+set_hl("NvimTreeIndentMarker", { fg = palette.invisibles })
+
+-- Oil.nvim highlights
+set_hl("OilDir", { fg = palette.keyword })
+set_hl("OilDirHidden", { fg = palette.invisibles })
+set_hl("OilDirIcon", { fg = palette.keyword })  -- Directory icon
+set_hl("OilFile", { link = "Normal" })
+set_hl("OilFileHidden", { fg = palette.invisibles })
+set_hl("OilSocket", { fg = palette.func })
+set_hl("OilSocketHidden", { fg = palette.invisibles })
+set_hl("OilLink", { fg = palette.func })
+set_hl("OilLinkHidden", { fg = palette.invisibles })
+set_hl("OilOrphanLink", { fg = palette.number })
+set_hl("OilOrphanLinkHidden", { fg = palette.invisibles })
+set_hl("OilLinkTarget", { fg = palette.func, italic = true })
+set_hl("OilOrphanLinkTarget", { fg = palette.number, italic = true })
+set_hl("OilLinkTargetHidden", { fg = palette.invisibles, italic = true })
+set_hl("OilOrphanLinkTargetHidden", { fg = palette.invisibles, italic = true })
+
+-- Oil preview window actions
+set_hl("OilCreate", { fg = palette.comment })  -- Create: green
+set_hl("OilDelete", { fg = palette.number })  -- Delete: red
+set_hl("OilMove", { fg = palette.string })  -- Move: orange
+set_hl("OilCopy", { fg = palette.keyword })  -- Copy: blue
+set_hl("OilChange", { fg = palette.func })  -- Change: magenta
+set_hl("OilRestore", { fg = palette.comment })  -- Restore: green
+set_hl("OilPurge", { fg = palette.number })  -- Purge: red
+set_hl("OilTrash", { fg = palette.number })  -- Trash: red
+set_hl("OilTrashSourcePath", { fg = palette.comment, italic = true })
+set_hl("OilEmpty", { fg = palette.invisibles })
+set_hl("OilHidden", { fg = palette.invisibles })
+
+-- Standard directory highlight (used by both)
+set_hl("Directory", { fg = palette.keyword })
