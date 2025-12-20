@@ -3,9 +3,9 @@ return {
 	priority = 1000,
 	lazy = false,
 	---@type snacks.Config
-	config = function()
-		require("plugins.setup.snack")
-	end,
+	-- config = function()
+	-- 	require("plugins.setup.snack")
+	-- end,
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },

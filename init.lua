@@ -3,3 +3,4 @@ require("config.keymaps")
 require("config.lazy")
 -- require("config.lsp.fold")
 vim.deprecate = function() end
+vim.cmd("colorscheme whale")
