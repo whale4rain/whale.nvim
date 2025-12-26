@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: undefined-global
 local opt = vim.opt
 -- vim.o.background = "light"
 -- Hint: use `:h <option>` to figure out the meaning if needed

@@ -16,21 +16,11 @@ require("snacks").setup({
 		},
 	},
 	dashboard = { enabled = false },
-	image = {
-		enabled = true,
-		doc = { enabled = true, inline = false, float = true, max_width = 80, max_height = 20 },
-	},
 	indent = {
 		enabled = false,
 		indent = { enabled = false },
 		animate = { duration = { step = 10, duration = 100 } },
 		scope = { enabled = true, char = "┊", underline = false, only_current = true, priority = 1000 },
-	},
-	styles = {
-		snacks_image = {
-			border = "rounded",
-			backdrop = false,
-		},
 	},
 })
 
@@ -38,6 +28,7 @@ local map = function(key, func, desc)
 	vim.keymap.set("n", key, func, { desc = desc })
 end
 
+local Snacks = require("snacks")
 map("<leader>ff", function() Snacks.picker.smart() end, "Smart find file")
 map("<leader>fo", function() Snacks.picker.recent() end, "Find recent file")
 map("<leader>fw", function() Snacks.picker.grep() end, "Find content")
@@ -83,4 +74,3 @@ map("<leader>gg", function() Snacks.lazygit({ cwd = Snacks.git.get_root() }) end
 map("<leader>n", function() Snacks.notifier.show_history() end, "Notification history")
 map("<leader>N", function() Snacks.notifier.hide() end, "Hide notifications")
 map("<leader>gb", function() Snacks.git.blame_line() end, "Git blame line")
-map("<leader>K", function() Snacks.image.hover() end, "Display image in hover")
