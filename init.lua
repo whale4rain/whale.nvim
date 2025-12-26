@@ -1,4 +1,9 @@
+-- Load core configuration
 require("config.options")
 require("config.keymaps")
-require("config.lazy")
-vim.cmd("colorscheme whale")
+
+-- Load native vim.pack package manager
+require("config.pack")
+
+-- Load and configure all plugins
+require("config.plugins").load_configs()
