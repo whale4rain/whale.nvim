@@ -1,55 +1,53 @@
-return {
-	"echasnovski/mini.clue",
-	event = "VeryLazy",
-	config = function()
-		local miniclue = require("mini.clue")
-		miniclue.setup({
-			window = {
-				config = {
-					width = "auto",
-				},
-			},
-			triggers = {
-				-- Leader triggers
-				{ mode = "n", keys = "<Leader>" },
-				{ mode = "x", keys = "<Leader>" },
+vim.pack.add({
+	"https://github.com/echasnovski/mini.clue",
+})
 
-				-- Built-in completion
-				{ mode = "i", keys = "<C-x>" },
+local miniclue = require("mini.clue")
 
-				-- `g` key
-				{ mode = "n", keys = "g" },
-				{ mode = "x", keys = "g" },
+miniclue.setup({
+	window = {
+		config = {
+			width = "auto",
+		},
+	},
+	triggers = {
+		-- Leader triggers
+		{ mode = "n", keys = "<Leader>" },
+		{ mode = "x", keys = "<Leader>" },
 
-				-- Marks
-				{ mode = "n", keys = "'" },
-				{ mode = "n", keys = "`" },
-				{ mode = "x", keys = "'" },
-				{ mode = "x", keys = "`" },
+		-- Built-in completion
+		{ mode = "i", keys = "<C-x>" },
 
-				-- Registers
-				{ mode = "n", keys = '"' },
-				{ mode = "x", keys = '"' },
-				{ mode = "i", keys = "<C-r>" },
-				{ mode = "c", keys = "<C-r>" },
+		-- `g` key
+		{ mode = "n", keys = "g" },
+		{ mode = "x", keys = "g" },
 
-				-- Window commands
-				{ mode = "n", keys = "<C-w>" },
+		-- Marks
+		{ mode = "n", keys = "'" },
+		{ mode = "n", keys = "`" },
+		{ mode = "x", keys = "'" },
+		{ mode = "x", keys = "`" },
 
-				-- `z` key
-				{ mode = "n", keys = "z" },
-				{ mode = "x", keys = "z" },
-			},
+		-- Registers
+		{ mode = "n", keys = '"' },
+		{ mode = "x", keys = '"' },
+		{ mode = "i", keys = "<C-r>" },
+		{ mode = "c", keys = "<C-r>" },
 
-			clues = {
-				-- Enhance this by adding descriptions for <Leader> mapping groups
-				miniclue.gen_clues.builtin_completion(),
-				miniclue.gen_clues.g(),
-				miniclue.gen_clues.marks(),
-				miniclue.gen_clues.registers(),
-				miniclue.gen_clues.windows(),
-				miniclue.gen_clues.z(),
-			},
-		})
-	end,
-}
+		-- Window commands
+		{ mode = "n", keys = "<C-w>" },
+
+		-- `z` key
+		{ mode = "n", keys = "z" },
+		{ mode = "x", keys = "z" },
+	},
+
+	clues = {
+		miniclue.gen_clues.builtin_completion(),
+		miniclue.gen_clues.g(),
+		miniclue.gen_clues.marks(),
+		miniclue.gen_clues.registers(),
+		miniclue.gen_clues.windows(),
+		miniclue.gen_clues.z(),
+	},
+})

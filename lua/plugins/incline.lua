@@ -1,10 +1,5 @@
----@function 右上角的文件提示
+vim.pack.add({
+	"https://github.com/b0o/incline.nvim",
+})
 
-return {
-	"b0o/incline.nvim",
-	config = function()
-		require("incline").setup()
-	end,
-	-- Optional: Lazy load Incline
-	event = "VeryLazy",
-}
+require("incline").setup({})

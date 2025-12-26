@@ -2,8 +2,45 @@
 require("config.options")
 require("config.keymaps")
 
--- Load native vim.pack package manager
-require("config.pack")
+-- Load core dependencies first
+require("plugins.core")
 
--- Load and configure all plugins
-require("config.plugins").load_configs()
+-- Load colorscheme
+require("plugins.colorscheme")
+
+-- Load LSP configuration
+require("config.lsp")
+
+-- Load plugins (each plugin now manages its own vim.pack.add)
+require("plugins.nvim-treesitter")
+require("plugins.blinkcmp")
+require("plugins.nvim-tree")
+require("plugins.oil")
+require("plugins.gitsigns")
+require("plugins.statusline")
+require("plugins.buffer")
+require("plugins.incline")
+require("plugins.snack")
+require("plugins.modes")
+require("plugins.comfy-line-number")
+require("plugins.flash")
+require("plugins.surround")
+require("plugins.autopairs")
+require("plugins.mark")
+require("plugins.trouble")
+require("plugins.ufo")
+require("plugins.toggleterm")
+require("plugins.session")
+require("plugins.indent")
+require("plugins.indent-autosetup")
+require("plugins.ai")
+require("plugins.copilot")
+require("plugins.go")
+require("plugins.diffview")
+require("plugins.grup-far")
+require("plugins.render-markdown")
+require("plugins.image")
+require("plugins.leetcode")
+require("plugins.diagnostic")
+require("plugins.whitespace")
+require("plugins.which-key")

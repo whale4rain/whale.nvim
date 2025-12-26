@@ -1,7 +1,5 @@
-return {
-	"echasnovski/mini.indentscope",
-	opts = {
-		symbol = "┆",
-		options = { try_as_border = true },
-	},
-}
+vim.pack.add({
+	"https://github.com/lukas-reineke/indent-blankline.nvim",
+})
+
+require("ibl").setup({})

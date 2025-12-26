@@ -373,54 +373,49 @@ Leader key is **Space**
 
 ### Adding a New Plugin
 
-**Step 1**: Declare in `lua/config/pack.lua`
+**Step 1**: Create a new file in `lua/plugins/`
 
+For example, `lua/plugins/my-plugin.lua`:
 ```lua
-local plugins = {
-  -- ... existing plugins ...
-  
-  -- Add your plugin here
-  { "author/plugin-name" },
-}
-```
+vim.pack.add({
+    "https://github.com/author/my-plugin",
+})
 
-**Step 2**: Install the plugin
-
-```powershell
-.\pack-manager.ps1 install
-```
-
-**Step 3**: Configure in `lua/config/plugins.lua`
-
-```lua
--- Add configuration
-safe_setup("plugin-name", function(plugin)
-  plugin.setup({
+require("my-plugin").setup({
     -- Your configuration here
-  })
-end)
+})
+
+-- Keymaps (optional)
+vim.keymap.set("n", "<leader>mp", function()
+    require("my-plugin").do_something()
+end, { desc = "My plugin action" })
 ```
 
-**Step 4**: Restart Neovim
+**Step 2**: Add the require to `init.lua`:
 
-```powershell
-nvim
+```lua
+require("plugins.my-plugin")
 ```
+
+**Step 3**: Restart Neovim
+
+The plugin will be automatically installed on first load.
 
 ### Removing a Plugin
 
-**Step 1**: Remove from `lua/config/pack.lua`
+**Step 1**: Remove the require from `init.lua`
 
-Delete the line containing the plugin declaration.
+Delete the line: `require("plugins.plugin-name")`
 
-**Step 2**: Remove configuration from `lua/config/plugins.lua`
+**Step 2**: Delete the plugin file
 
-Delete any configuration blocks for that plugin.
+Delete `lua/plugins/plugin-name.lua`
 
-**Step 3**: Clean unused plugins
+**Step 3**: (Optional) Clean plugin data
 
 ```powershell
-.\pack-manager.ps1 clean
+# Remove the plugin directory from pack
+Remove-Item -Recurse C:\Users\USERNAME\AppData\Local\nvim-data\site\pack\*\opt\plugin-name
 ```
 
 **Step 4**: Restart Neovim
