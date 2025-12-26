@@ -12,6 +12,10 @@
       "rev": "5aca37f9eefdd2e69560626b06fc30e573347d0f",
       "src": "https://github.com/whale4rain/blue-whale.nvim"
     },
+    "comfy-line-numbers.nvim": {
+      "rev": "3c51fa4104b97ddaccb66a6b34552e3eafd5b645",
+      "src": "https://github.com/mluders/comfy-line-numbers.nvim"
+    },
     "conform.nvim": {
       "rev": "5420c4b5ea0aeb99c09cfbd4fd0b70d257b44f25",
       "src": "https://github.com/stevearc/conform.nvim"

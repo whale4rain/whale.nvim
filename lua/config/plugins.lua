@@ -90,23 +90,38 @@ function M.load_configs()
 	end)
 
 	-- Treesitter
-	safe_setup("nvim-treesitter.configs", function(configs)
-		configs.setup({
+	local treesitter_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+	if treesitter_ok then
+		treesitter.setup({
 			ensure_installed = {
 				"go", "c", "lua", "vim", "vimdoc", "query",
 				"python", "rust", "javascript", "html", "cpp", "regex",
 			},
-			sync_install = true,
+			sync_install = false,
+			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
 		})
 		vim.wo.foldmethod = "expr"
+		vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 		vim.wo.foldlevel = 99
-	end)
+	end
 
 	-- Completion (blink.cmp)
 	safe_setup("blink.cmp", function(blink)
 		blink.setup({
+			fuzzy = {
+				use_typo_resistance = true,
+				frecency = { enabled = true },
+				use_proximity = true,
+				prebuilt_binaries = {
+					download = true,
+					force_version = nil,
+				},
+			},
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
 			cmdline = {
 				keymap = {
 					["<Tab>"] = { "select_and_accept", "fallback" },
@@ -413,7 +428,7 @@ function M.load_configs()
 		vim.o.foldlevel = 99
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true
-		vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+		vim.o.fillchars = [[eob: ,fold: ,foldopen:▾,foldsep: ,foldclose:▸]]
 
 		local handler = function(virtText, lnum, endLnum, width, truncate)
 			local newVirtText = {}
@@ -603,10 +618,15 @@ function M.load_configs()
 		render.setup({})
 	end)
 
-	-- Image support
-	safe_setup("image", function(image)
-		image.setup({})
-	end)
+	-- Image support (requires ImageMagick or similar)
+	-- Note: image.nvim may not work in all terminals
+	-- Skip setup if not available to prevent errors
+	local image_ok = pcall(require, "image")
+	if image_ok then
+		safe_setup("image", function(image)
+			image.setup({})
+		end)
+	end
 
 	-- Leetcode
 	safe_setup("leetcode", function(leetcode)

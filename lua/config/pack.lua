@@ -22,7 +22,7 @@ local plugins = {
 	{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	{ "folke/lazydev.nvim" },
 	{ "antosha417/nvim-lsp-file-operations" },
-	{ "saghen/blink.cmp" },
+	{ "saghen/blink.cmp", version = "v1.8.0" },  -- Use tagged version with prebuilt binaries
 	{ "rafamadriz/friendly-snippets" },
 
 	-- Formatting & Linting
@@ -94,21 +94,22 @@ local plugins = {
 
 -- Add all plugins using vim.pack.add()
 local function setup_plugins()
-	local specs = {}
-
 	for _, plugin in ipairs(plugins) do
 		local url
+		local opts = {}
+		
 		if type(plugin) == "string" then
 			url = "https://github.com/" .. plugin
 		else
 			url = "https://github.com/" .. plugin[1]
+			-- Handle version tag if specified
+			if plugin.version then
+				opts.version = plugin.version
+			end
 		end
 
-		table.insert(specs, url)
+		vim.pack.add({url}, opts)
 	end
-
-	-- Add all plugins
-	vim.pack.add(specs)
 end
 
 -- Install plugins on first run
