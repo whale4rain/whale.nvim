@@ -2,26 +2,36 @@
 
 A comprehensive Neovim configuration using the native vim.pack package manager.
 
-## Quick Start
+Pretty clear configration!
+<img src="https://cdn.jsdelivr.net/gh/whale4rain/picx-images-hosting@master/20260107/image.64ec59msei.webp" alt="image" />
 
+## Quick Start
+**win**
 ```powershell
-# Windows
-cd $env:LOCALAPPDATA\nvim
-.\pack-manager.ps1 install
+cd $env:LOCALAPPDATA
+git clone https://github.com/whale4rain/whale4rain.nvim.git
+mv whale4rain.nvim nvim
+nvim
+```
+**mac/linux**
+```bash
+cd ~/.config
+git clone https://github.com/whale4rain/whale4rain.nvim.git
+mv whale4rain.nvim nvim
 nvim
 ```
 
+
 ## Documentation
 
-- **[GUIDE.md](GUIDE.md)** - Complete guide (installation, configuration, troubleshooting)
 - **[REFERENCE.md](REFERENCE.md)** - Quick reference card (commands, keybindings)
 
 ## Features
 
-- Native vim.pack package manager (Neovim 0.10+)
+- Native vim.pack package manager (Neovim 0.12), very clear
 - 50+ plugins configured
 - LSP, Treesitter, Git integration
-- AI assistants (Supermaven, Copilot)
+- AI assistants (Supermaven, Copilot, sidkick)
 - Fast startup and performance
 
 ## Key Plugins
@@ -32,15 +42,6 @@ nvim
 - **File Navigation**: nvim-tree, oil.nvim, telescope
 - **Git**: gitsigns, diffview
 - **UI**: lualine, barbar, incline
-
-## Plugin Management
-
-```powershell
-.\pack-manager.ps1 install    # Install all plugins
-.\pack-manager.ps1 update     # Update all plugins
-.\pack-manager.ps1 list       # List plugin status
-.\pack-manager.ps1 clean      # Remove unused plugins
-```
 
 ## Essential Key Bindings
 

@@ -4,13 +4,14 @@ vim.pack.add({
 })
 
 require("blink.cmp").setup({
-	-- fuzzy = {
-	-- 	frecency = { enabled = true },
-	-- 	prebuilt_binaries = {
-	-- 		download = true,
-	-- 		force_version = nil,
-	-- 	},
-	-- },
+	fuzzy = {
+		implementation = "lua",
+		-- frecency = { enabled = true },
+		-- prebuilt_binaries = {
+		-- 	download = true,
+		-- 	force_version = nil,
+		-- },
+	},
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
 	},
